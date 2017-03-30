@@ -1,4 +1,4 @@
-useDynLib(dvmisc)
+#useDynLib(dvmisc)
 exportPattern("^[[:alpha:]]+")
 importFrom(Rcpp, "evalCpp")
 import(rbenchmark)
