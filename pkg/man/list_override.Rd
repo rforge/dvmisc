@@ -1,7 +1,7 @@
 \name{list.override}
 \alias{list.override}
 \title{
-Add/Replace Elements of First List with Elements of Second List
+Add Elements of Second List to First List, Replacing Elements with Same Name
 }
 \description{
 Adds each element of list2 to list1, overriding any elements of the same name. Similar to modifyList function in utils package, but either list can be NULL. Useful for do.call statements, when you want to combine a list of default inputs with a list of user-specified inputs.
