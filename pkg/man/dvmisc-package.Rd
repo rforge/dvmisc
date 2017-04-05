@@ -13,7 +13,7 @@ A collection of general-purpose R functions, most of which are either simple fun
 Package: \tab dvmisc\cr
 Type: \tab Package\cr
 Version: \tab 1.1.1\cr
-Date: \tab 2017-04-03\cr
+Date: \tab 2017-04-05\cr
 License: \tab GPL-2\cr
 }
 The following functions are included:

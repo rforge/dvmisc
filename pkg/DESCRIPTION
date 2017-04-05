@@ -2,7 +2,7 @@ Package: dvmisc
 Type: Package
 Title: Miscellaneous General-Purpose Functions
 Version: 1.1.1
-Date: 2017-04-03
+Date: 2017-04-05
 Author: Dane R. Van Domelen
 Maintainer: Dane R. Van Domelen <vandomed@gmail.com>
 Description: A collection of general-purpose R functions, most of which are either simple functions that do something convenient (e.g. create quantile groups, assess linearity in logistic regression) or faster versions of base R functions (e.g. run length encoding).
