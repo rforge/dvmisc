@@ -9,6 +9,7 @@ Creates plot showing mean of Y variable across levels of a grouping variable, wi
 \usage{
 means.graph(y, group, error.bars = "t.ci", alpha = 0.05, 
             plot.list = NULL, 
+            lines.list = NULL,
             axis.list = NULL)
 }
 \arguments{
@@ -26,6 +27,9 @@ Numeric value indicating what alpha should be set to for confidence intervals. O
 }
   \item{plot.list}{
 Optional list of inputs to pass to plot function.  
+}
+  \item{lines.list}{
+Optional list of inputs to pass to lines function.  
 }
   \item{axis.list}{
 Optional list of inputs to pass to axis function.

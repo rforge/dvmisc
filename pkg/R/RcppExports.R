@@ -47,6 +47,7 @@ interval.groups <- function(x, num = 5, ...) {
 # Create graph of mean +/- error bar for continuous variable vs. factor
 means.graph <- function(y, group, error.bars = "t.ci", alpha = 0.05, 
                         plot.list = NULL, 
+                        lines.list = NULL, 
                         axis.list = NULL) {
   
   # Drop missing values
@@ -65,7 +66,6 @@ means.graph <- function(y, group, error.bars = "t.ci", alpha = 0.05,
   
   # Get group means
   means <- tapply(X = y, INDEX = group, FUN = mean)
-  #ns <- tapply(X = y, INDEX = group, FUN = length)
   
   # Create error bars
   if (error.bars != "none") {
