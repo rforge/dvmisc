@@ -184,16 +184,6 @@ means.graph <- function(y, group, error.bars = "t.ci", alpha = 0.05,
 
 
 # Plot sample log-odds for binary variable vs. factor
-n <- 500
-x <- rnorm(n)
-y <- rbinom(n = n, size = 1, prob = (1 + exp(-0.25 - 0.5 * x))^(-1))
-table(y)
-group <- interval.groups(x)
-group2 <- as.character(group)
-logodds.graph(y = y, group = group, error.bars = "z.ci")
-
-
-
 logodds.graph <- function(y, group, error.bars = "none", alpha = 0.05,
                           plot.list = NULL, 
                           lines.list = NULL,
