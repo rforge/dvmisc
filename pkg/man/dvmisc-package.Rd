@@ -13,7 +13,7 @@ A collection of general-purpose R functions, most of which are either simple fun
 Package: \tab dvmisc\cr
 Type: \tab Package\cr
 Version: \tab 1.1.1\cr
-Date: \tab 2017-04-05\cr
+Date: \tab 2017-04-06\cr
 License: \tab GPL-2\cr
 }
 The following functions are included:
@@ -21,6 +21,7 @@ The following functions are included:
 \code{\link{list.override}}
 \code{\link{interval.groups}}
 \code{\link{means.graph}}
+\code{\link{logodds.graph}}
 }
 \author{
 Dane R. Van Domelen
