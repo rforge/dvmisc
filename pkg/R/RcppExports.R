@@ -182,12 +182,14 @@ means.graph <- function(y, group, error.bars = "t.ci", alpha = 0.05,
   
 }
 
-
+# Should be chi-square or fisher
 # Plot sample log-odds for binary variable vs. factor
 logodds.graph <- function(y, group, error.bars = "none", alpha = 0.05,
+                          p.legend = "chi",
                           plot.list = NULL, 
                           lines.list = NULL,
-                          axis.list = NULL) {
+                          axis.list = NULL, 
+                          ...) {
   
   # Drop missing values
   locs.missing <- which(is.na(y) | is.na(group))
@@ -277,5 +279,38 @@ logodds.graph <- function(y, group, error.bars = "none", alpha = 0.05,
   
   # Add labels
   do.call(axis, axis.list)
+  
+  # Add legend
+  if (p.legend) {
+    
+    # Perform t-test/ANOVA
+    if (length(unique(group)) == 2) {
+      pval <- t.test(y ~ group, ...)$p.value
+      if (pval < 0.001) {
+        pval.text <- "T-test P < 0.001"
+      } else if (pval < 0.05) {
+        pval.text <- paste("T-test P = ", sprintf("%.3f", pval), sep = "")
+      } else {
+        pval.text <- paste("T-test P = ", sprintf("%.2f", pval), sep = "")
+      }
+    } else {
+      pval <- summary(aov(y ~ group, ...))[[1]][[1, "Pr(>F)"]]
+      if (pval < 0.001) {
+        pval.text <- "ANOVA P < 0.001"
+      } else if (pval < 0.05) {
+        pval.text <- paste("ANOVA P = ", sprintf("%.3f", pval), sep = "")
+      } else {
+        pval.text <- paste("ANOVA P = ", sprintf("%.2f", pval), sep = "")
+      }
+    }
+    
+    # Add user inputs to legend, if any
+    legend.list <- list.override(list1 = list(x = "topleft", legend = pval.text),
+                                 list2 = legend.list)
+    
+    # Add legend
+    do.call(legend, legend.list)
+    
+  }
   
 }

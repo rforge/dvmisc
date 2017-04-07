@@ -29,7 +29,7 @@ Character string indicating what the error bars should represent. Possible value
 Numeric value indicating what alpha should be set to for confidence intervals. Only used if error.bars is "t.ci" or "z.ci".   
 }
   \item{p.legend}{
-If TRUE, p-value is printed in a legend.  
+If TRUE, p-value (from t.test function if group has 2 levels, otherwise aov function) is printed in a legend.
 }
   \item{plot.list}{
 Optional list of inputs to pass to plot function.  

@@ -7,10 +7,12 @@ Graph Log-Odds of Binary Variable Across A Grouping Variable
 Creates plot showing sample log-odds of binary Y variable across levels of a grouping variable, with customizable error bars.
 }
 \usage{
-logodds.graph(y, group, error.bars = "none", alpha = 0.05, 
+logodds.graph(y, group, error.bars = "none", alpha = 0.05,
+              p.legend = "none",
               plot.list = NULL, 
               lines.list = NULL,
-              axis.list = NULL)
+              axis.list = NULL,
+              ...)
 }
 \arguments{
   \item{y}{
@@ -25,6 +27,10 @@ Character string indicating what the error bars should represent. Possible value
   \item{alpha}{
 Numeric value indicating what alpha should be set to for confidence intervals. Only used if error.bars is "exact.ci" or "z.ci".   
 }
+  \item{p.legend}{
+Character string controlling what p-value is printed in a legend. Possible values are "exact" for exact binomial test
+If TRUE, p-value  from binom.test or (from t.test function if group has 2 levels, otherwise aov function) is printed in a legend.
+}
   \item{plot.list}{
 Optional list of inputs to pass to plot function.  
 }
@@ -33,6 +39,9 @@ Optional list of inputs to pass to lines function.
 }
   \item{axis.list}{
 Optional list of inputs to pass to axis function.
+}
+  \item{...}{
+Further arguments passed to other methods.
 }
 }
 \details{

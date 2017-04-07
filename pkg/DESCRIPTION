@@ -9,5 +9,5 @@ Description: A collection of general-purpose R functions, most of which are eith
 LazyData: true
 License: GPL-2
 Depends: R (>= 3.0.0), rbenchmark
-Imports: Rcpp (>= 0.11.0)
+Imports: Rcpp (>= 0.11.0), graphics, stats
 LinkingTo: Rcpp
