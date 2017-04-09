@@ -8,7 +8,7 @@ Creates plot showing sample log-odds of binary Y variable across levels of a gro
 }
 \usage{
 logodds.graph(y, group, error.bars = "none", alpha = 0.05,
-              p.legend = "none",
+              p.legend = "chi",
               plot.list = NULL, 
               lines.list = NULL,
               axis.list = NULL,
