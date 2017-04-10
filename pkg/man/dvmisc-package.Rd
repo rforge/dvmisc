@@ -13,14 +13,16 @@ A collection of general-purpose R functions, most of which are either simple fun
 Package: \tab dvmisc\cr
 Type: \tab Package\cr
 Version: \tab 1.1.1\cr
-Date: \tab 2017-04-06\cr
+Date: \tab 2017-04-10\cr
 License: \tab GPL-2\cr
 }
 The following functions are included:
 
-\code{\link{list.override}}
-\code{\link{interval.groups}}
-\code{\link{means.graph}}
+\code{\link{list.override}}\cr
+\code{\link{interval.groups}}\cr
+\code{\link{bmi3}}\cr
+\code{\link{bmi4}}\cr
+\code{\link{means.graph}}\cr
 \code{\link{logodds.graph}}
 }
 \author{

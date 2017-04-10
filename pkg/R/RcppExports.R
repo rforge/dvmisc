@@ -44,6 +44,30 @@ interval.groups <- function(x, num = 5, ...) {
 }
 
 
+# Create 3 BMI groups
+bmi3 <- function(x, labels = T) {
+  if (labels) {
+    y <- cut(x, breaks = c(-Inf, 25, 30, Inf), right = F, 
+             labels = c("Normal weight", "Overweight", "Obese"))
+  } else {
+    y <- cut(x, breaks = c(-Inf, 25, 30, Inf), right = F)
+  }
+  return(y)
+}
+
+
+# Create 4 BMI groups
+bmi4 <- function(x, labels = F) {
+  if (labels) {
+    y <- cut(x, breaks = c(-Inf, 18.5, 25, 30, Inf), right = F, 
+             labels = c("Underweight", "Normal weight", "Overweight", "Obese"))
+  } else {
+    y <- cut(x, breaks = c(-Inf, 18.5, 25, 30, Inf), right = F)
+  }
+  return(y)
+}
+
+
 # Create graph of mean +/- error bar for continuous variable vs. factor
 means.graph <- function(y, group, error.bars = "t.ci", alpha = 0.05, 
                         p.legend = TRUE, 
