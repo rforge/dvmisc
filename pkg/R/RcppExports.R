@@ -112,11 +112,18 @@ means.graph <- function(y, group, error.bars = "t.ci", alpha = 0.05,
   }
   
   # Figure out ylim values
-  max.error <- max(upper.bars)
-  min.error <- min(lower.bars)
-  span.error <- max.error - min.error
-  y1 <- min.error - 0.1 * span.error
-  y2 <- max.error + 0.1 * span.error
+  if (!is.null(lower.bars)) {
+    max.error <- max(upper.bars)
+    min.error <- min(lower.bars)
+    span.error <- max.error - min.error
+    y1 <- min.error - 0.1 * span.error
+    y2 <- max.error + 0.1 * span.error
+  } else {
+    range.means <- range(means)
+    span.means <- diff(range.means)
+    y1 <- range.means[1] - 0.1 * span.means
+    y2 <- range.means[2] + 0.1 * span.means
+  }
   
   # Figure out features of graph, based on user inputs where available
   plot.list <- list.override(list1 = list(x = means, type = "p", pch = 16, xaxt = "n",
