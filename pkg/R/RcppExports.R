@@ -57,7 +57,7 @@ bmi3 <- function(x, labels = T) {
 
 
 # Create 4 BMI groups
-bmi4 <- function(x, labels = F) {
+bmi4 <- function(x, labels = T) {
   if (labels) {
     y <- cut(x, breaks = c(-Inf, 18.5, 25, 30, Inf), right = F, 
              labels = c("Underweight", "Normal weight", "Overweight", "Obese"))
