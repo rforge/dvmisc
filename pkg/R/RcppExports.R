@@ -77,16 +77,16 @@ means.graph <- function(y, group, error.bars = "t.ci", alpha = 0.05,
                         legend.list = NULL, 
                         ...) {
   
+  # Get name of y and group variables for axis labels
+  y.varname <- deparse(substitute(y))
+  group.varname <- deparse(substitute(group))
+  
   # Drop missing values
   locs.missing <- which(is.na(y) | is.na(group))
   if (length(locs.missing) > 0) {
     y <- y[-locs.missing]
     group <- group[-locs.missing]
   }
-  
-  # Get name of y and group variables for axis labels
-  y.varname <- deparse(substitute(y))
-  group.varname <- deparse(substitute(group))
   
   # Get levels of groups variable for tick labels
   group.levels <- names(table(group))
@@ -222,16 +222,16 @@ logodds.graph <- function(y, group, error.bars = "none", alpha = 0.05,
                           legend.list = NULL,
                           ...) {
   
+  # Get name of y and group variables for axis labels
+  y.varname <- deparse(substitute(y))
+  group.varname <- deparse(substitute(group))
+  
   # Drop missing values
   locs.missing <- which(is.na(y) | is.na(group))
   if (length(locs.missing) > 0) {
     y <- y[-locs.missing]
     group <- group[-locs.missing]
   }
-  
-  # Get name of y and group variables for axis labels
-  y.varname <- deparse(substitute(y))
-  group.varname <- deparse(substitute(group))
   
   # Create contingency table
   group.y.table <- table(group, y)

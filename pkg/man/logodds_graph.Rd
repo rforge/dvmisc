@@ -12,6 +12,7 @@ logodds.graph(y, group, error.bars = "none", alpha = 0.05,
               plot.list = NULL, 
               lines.list = NULL,
               axis.list = NULL,
+              legend.list = NULL,
               ...)
 }
 \arguments{
