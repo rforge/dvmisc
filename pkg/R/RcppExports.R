@@ -25,16 +25,34 @@ list.override <- function(list1, list2) {
 
 
 # Create fixed number of groups covering range of input vector x
-interval.groups <- function(x, num = 5, ...) {
+interval.groups <- function(x, groups = 5, ...) {
   
   # Figure out break points to split x into even intervals spanning its range
   x.range <- range(x, na.rm = T)
-  cut.breaks <- seq(x.range[1], x.range[2], diff(x.range) / num)
+  cut.breaks <- seq(x.range[1], x.range[2], diff(x.range) / groups)
   cut.breaks[c(1, length(cut.breaks))] <- c(-Inf, Inf)
   
   # Create groups
   groups <- cut(x = x, breaks = cut.breaks)
   #groups <- cut(x = x, breaks = cut.breaks, ...)
+  
+  # Print message and return groups
+  num.missing <- sum(is.na(groups))
+  message(paste("Observations per group: ", paste(table(groups), collapse = ", "), ". ", num.missing, " missing.", sep = ""))
+  return(groups)
+  
+}
+
+
+# Create quantile groups. Consider adding labels option, e.g. could be "#" for number, "Q#" for Q1, Q2, etc., 
+# or "interval" for the actual intervals.
+quantile.groups <- function(x, groups = 5, ...) {
+  
+  # Calculate quantiles
+  quantiles <- quantile(x, probs = seq(0, 1, 1 / groups))
+  
+  # Create quantile groups
+  groups <- cut(x, breaks = quantiles, include.lowest = T, ...)
   
   # Print message and return groups
   num.missing <- sum(is.na(groups))

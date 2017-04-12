@@ -4,16 +4,16 @@
 Split Continuous Variable into Equal-Width Groups
 }
 \description{
-Splits a continuous variable into num equal-width groups. Useful for assessing linearity in regression models.
+Splits a continuous variable into equal-width groups. Useful for assessing linearity in regression models.
 }
 \usage{
-interval.groups(x, num = 5, ...)
+interval.groups(x, groups = 5, ...)
 }
 \arguments{
   \item{x}{
 Numeric vector.
 }
-  \item{num}{
+  \item{groups}{
 Numeric value indicating how many groups should be created.
 }
   \item{...}{
@@ -24,7 +24,7 @@ Further arguments to pass to cut function.
 NA
 }
 \value{
-A list containing the named elements initially in list 1 and not in list 2, any additional named elements in list 2, and any named elements in list 1 that were replaced by elements of the same name in list 2.
+Factor variable.
 }
 \note{
 NA
@@ -41,7 +41,7 @@ Dane R. Van Domelen
 \examples{
 # Convert values from N(0, 1) into 6 equal-width groups
 x <- rnorm(1000)
-groups <- interval.groups(x, num = 6)
+groups <- interval.groups(x, 6)
 table(groups)
 
 # Use interval.groups to detect non-linearity
