@@ -1,5 +1,5 @@
-\name{quantile.groups}
-\alias{quantile.groups}
+\name{quant.groups}
+\alias{quant.groups}
 \title{
 Split Continuous Variable into Quantile Groups
 }
@@ -7,7 +7,7 @@ Split Continuous Variable into Quantile Groups
 Splits a continuous variable into quantiles groups. Basically combines quantile and cut into a single function.
 }
 \usage{
-quantile.groups(x, groups = 5, ...)
+quant.groups(x, groups = 5, ...)
 }
 \arguments{
   \item{x}{
@@ -41,6 +41,6 @@ Dane R. Van Domelen
 \examples{
 # Convert values from N(0, 1) into quintiles (i.e. 5 groups)
 x <- rnorm(1000)
-groups <- quantile.groups(x, 5)
+groups <- quant.groups(x, 5)
 table(groups)
 }

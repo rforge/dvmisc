@@ -46,7 +46,7 @@ interval.groups <- function(x, groups = 5, ...) {
 
 # Create quantile groups. Consider adding labels option, e.g. could be "#" for number, "Q#" for Q1, Q2, etc., 
 # or "interval" for the actual intervals.
-quantile.groups <- function(x, groups = 5, ...) {
+quant.groups <- function(x, groups = 5, ...) {
   
   # Calculate quantiles
   quantiles <- quantile(x, probs = seq(0, 1, 1 / groups))
@@ -230,6 +230,7 @@ means.graph <- function(y, group, error.bars = "t.ci", alpha = 0.05,
   do.call(axis, axis.list)
   
 }
+
 
 # Plot sample log-odds for binary variable vs. factor
 logodds.graph <- function(y, group, error.bars = "none", alpha = 0.05,

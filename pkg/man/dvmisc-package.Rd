@@ -20,6 +20,7 @@ The following functions are included:
 
 \code{\link{list.override}}\cr
 \code{\link{interval.groups}}\cr
+\code{\link{quant.groups}}\cr
 \code{\link{bmi3}}\cr
 \code{\link{bmi4}}\cr
 \code{\link{means.graph}}\cr

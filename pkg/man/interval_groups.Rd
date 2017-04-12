@@ -36,7 +36,7 @@ Acknowledgment: This material is based upon work supported by the National Scien
 Dane R. Van Domelen
 }
 \seealso{
-\code{\link{cut}}
+\code{\link{cut}}, \code{\link{quant.groups}}
 }
 \examples{
 # Convert values from N(0, 1) into 6 equal-width groups
