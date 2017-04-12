@@ -36,7 +36,7 @@ Acknowledgment: This material is based upon work supported by the National Scien
 Dane R. Van Domelen
 }
 \seealso{
-\code{\link{quantile}}, \code{\link{cut}, \code{\link{interval.groups}}
+\code{\link{quantile}}, \code{\link{cut}}, \code{\link{interval.groups}}
 }
 \examples{
 # Convert values from N(0, 1) into quintiles (i.e. 5 groups)
