@@ -28,8 +28,7 @@ Character string indicating what the error bars should represent. Possible value
 Numeric value indicating what alpha should be set to for confidence intervals. Only used if error.bars is "exact.ci" or "z.ci".   
 }
   \item{p.legend}{
-Character string controlling what p-value is printed in a legend. Possible values are "exact" for exact binomial test
-If TRUE, p-value  from binom.test or (from t.test function if group has 2 levels, otherwise aov function) is printed in a legend.
+Character string controlling what p-value is printed in a legend. Possible values are "chi" for Chi-square test of association, "fisher" for Fisher's exact test, and "none" for no legend at all.
 }
   \item{plot.list}{
 Optional list of inputs to pass to plot function.  
@@ -39,6 +38,9 @@ Optional list of inputs to pass to lines function.
 }
   \item{axis.list}{
 Optional list of inputs to pass to axis function.
+}
+  \item{legend.list}{
+Optional list of inputs to pass to legend function.
 }
   \item{...}{
 Further arguments passed to other methods.

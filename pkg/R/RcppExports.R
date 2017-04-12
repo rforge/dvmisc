@@ -213,13 +213,13 @@ means.graph <- function(y, group, error.bars = "t.ci", alpha = 0.05,
   
 }
 
-# Should be chi-square or fisher
 # Plot sample log-odds for binary variable vs. factor
 logodds.graph <- function(y, group, error.bars = "none", alpha = 0.05,
                           p.legend = "chi",
                           plot.list = NULL, 
                           lines.list = NULL,
                           axis.list = NULL, 
+                          legend.list = NULL,
                           ...) {
   
   # Drop missing values
@@ -270,18 +270,20 @@ logodds.graph <- function(y, group, error.bars = "none", alpha = 0.05,
   
   # Figure out ylim values
   if (!is.null(lower.bars)) {
-    max.error <- max(upper.bars)
-    min.error <- min(lower.bars)
+    max.error <- max(upper.bars[!is.infinite(upper.bars)])
+    min.error <- min(lower.bars[!is.infinite(lower.bars)])
     span.error <- max.error - min.error
     y1 <- min.error - 0.1 * span.error
     y2 <- max.error + 0.1 * span.error
+    upper.bars[upper.bars == Inf] <- max.error + span.error
+    lower.bars[lower.bars == Inf] <- min.error - span.error
   } else {
-    range.logodds <- range(logodds)
+    range.logodds <- range(logodds[!is.infinite(logodds)])
     span.logodds <- diff(range.logodds)
     y1 <- range.logodds[1] - 0.1 * span.logodds
     y2 <- range.logodds[2] + 0.1 * span.logodds
   }
-  
+
   # Figure out features of graph, based on user inputs where available
   plot.list <- list.override(list1 = list(x = logodds, type = "p", pch = 16, xaxt = "n",
                                           main = paste("Log-odds ", y.varname, " by ", group.varname, sep = ""),
@@ -312,27 +314,32 @@ logodds.graph <- function(y, group, error.bars = "none", alpha = 0.05,
   do.call(axis, axis.list)
   
   # Add legend
-  if (p.legend) {
+  if (p.legend != "none") {
     
-    # Perform t-test/ANOVA
-    if (length(unique(group)) == 2) {
-      pval <- t.test(y ~ group, ...)$p.value
+    if (p.legend == "chi") {
+      
+      # Perform Chi-square test for association
+      pval <- chisq.test(x = group, y = y, ...)$p.value
       if (pval < 0.001) {
-        pval.text <- "T-test P < 0.001"
+        pval.text <- "Chi-square P < 0.001"
       } else if (pval < 0.05) {
-        pval.text <- paste("T-test P = ", sprintf("%.3f", pval), sep = "")
+        pval.text <- paste("Chi-square P = ", sprintf("%.3f", pval), sep = "")
       } else {
-        pval.text <- paste("T-test P = ", sprintf("%.2f", pval), sep = "")
+        pval.text <- paste("Chi-square P = ", sprintf("%.2f", pval), sep = "")
       }
-    } else {
-      pval <- summary(aov(y ~ group, ...))[[1]][[1, "Pr(>F)"]]
+      
+    } else if (p.legend == "fisher") {
+      
+      # Perform Fisher's exact test
+      pval <- fisher.test(x = group, y = y, ...)$p.value
       if (pval < 0.001) {
-        pval.text <- "ANOVA P < 0.001"
+        pval.text <- "Fisher P < 0.001"
       } else if (pval < 0.05) {
-        pval.text <- paste("ANOVA P = ", sprintf("%.3f", pval), sep = "")
+        pval.text <- paste("Fisher P = ", sprintf("%.3f", pval), sep = "")
       } else {
-        pval.text <- paste("ANOVA P = ", sprintf("%.2f", pval), sep = "")
+        pval.text <- paste("Fisher P = ", sprintf("%.2f", pval), sep = "")
       }
+      
     }
     
     # Add user inputs to legend, if any
