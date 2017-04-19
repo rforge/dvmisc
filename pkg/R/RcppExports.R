@@ -33,8 +33,7 @@ interval.groups <- function(x, groups = 5, ...) {
   cut.breaks[c(1, length(cut.breaks))] <- c(-Inf, Inf)
   
   # Create groups
-  groups <- cut(x = x, breaks = cut.breaks)
-  #groups <- cut(x = x, breaks = cut.breaks, ...)
+  groups <- cut(x = x, breaks = cut.breaks, ...)
   
   # Print message and return groups
   num.missing <- sum(is.na(groups))
@@ -49,7 +48,7 @@ interval.groups <- function(x, groups = 5, ...) {
 quant.groups <- function(x, groups = 5, ...) {
   
   # Calculate quantiles
-  quantiles <- quantile(x, probs = seq(0, 1, 1 / groups))
+  quantiles <- quantile(x, probs = seq(0, 1, 1 / groups), na.rm = T, ...)
   
   # Create quantile groups
   groups <- cut(x, breaks = quantiles, include.lowest = T, ...)
