@@ -294,7 +294,7 @@ logodds.graph <- function(y, group, error.bars = "none", alpha = 0.05,
     y1 <- min.error - 0.1 * span.error
     y2 <- max.error + 0.1 * span.error
     upper.bars[upper.bars == Inf] <- max.error + span.error
-    lower.bars[lower.bars == Inf] <- min.error - span.error
+    lower.bars[lower.bars == -Inf] <- min.error - span.error
   } else {
     range.logodds <- range(logodds[!is.infinite(logodds)])
     span.logodds <- diff(range.logodds)
