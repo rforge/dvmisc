@@ -253,9 +253,17 @@ logodds.graph <- function(y, group, error.bars = "none", alpha = 0.05,
   
   # Create contingency table
   group.y.table <- table(group, y)
+  x <- 1: nrow(group.y.table)
   
   # Get levels of groups variable for tick labels
   group.levels <- rownames(group.y.table)
+  
+  # Exclude rows of 0
+  locs.0 <- which(apply(group.y.table, 1, sum) == 0)
+  if (length(locs.0) > 0) {
+    group.y.table <- group.y.table[-locs.0, ]
+    x <- x[-locs.0]
+  }
   
   # Get outcome probabilities and log-odds for each level
   probs <- apply(group.y.table, 1, function(x) x[2] / sum(x))
@@ -272,7 +280,8 @@ logodds.graph <- function(y, group, error.bars = "none", alpha = 0.05,
     
   } else if (error.bars == "z.ci") {
     
-    probs.ci <- apply(group.y.table, 1, function(x) prop.test(x = x[2], n = sum(x), conf.level = 1 - alpha)$conf.int)
+    probs.ci <- apply(group.y.table, 1, function(x) 
+      prop.test(x = x[2], n = sum(x), conf.level = 1 - alpha)$conf.int)
     logodds.ci <- log(probs.ci / (1 - probs.ci))
     lower.bars <- logodds.ci[1, ]
     upper.bars <- logodds.ci[2, ]
@@ -303,14 +312,19 @@ logodds.graph <- function(y, group, error.bars = "none", alpha = 0.05,
   }
 
   # Figure out features of graph, based on user inputs where available
-  plot.list <- list.override(list1 = list(x = logodds, type = "p", pch = 16, xaxt = "n",
+  plot.list <- list.override(list1 = list(x = x, y = logodds, 
+                                          type = "p", pch = 16, xaxt = "n",
                                           main = paste("Log-odds ", y.varname, " by ", group.varname, sep = ""),
                                           cex.main = 1.25,
                                           xlab = group.varname, ylab = y.label,
                                           xlim = c(0.5, length(group.levels) + 0.5),
                                           ylim = c(y1, y2)),
                              list2 = plot.list)
-  axis.list <- list.override(list1 = list(side = 1, at = 1: length(group.levels), labels = group.levels),
+  cex.axis.value <- ifelse(length(group.levels) <= 3, 1, 
+                           ifelse(length(group.levels) >= 8, 0.5,
+                                  1 - 0.1 * (length(group.levels) - 3)))
+  axis.list <- list.override(list1 = list(side = 1, at = 1: length(group.levels), labels = group.levels,
+                                          cex.axis = cex.axis.value),
                              list2 = axis.list)
   
   # Create graph
@@ -321,9 +335,9 @@ logodds.graph <- function(y, group, error.bars = "none", alpha = 0.05,
     for (ii in 1:length(lower.bars)) {
       
       end.points <- c(lower.bars[ii], upper.bars[ii])
-      do.call(lines, c(list(x = rep(ii, 2), y = end.points), lines.list))
-      do.call(lines, c(list(x = c(ii - 0.03, ii + 0.03), y = rep(end.points[1], 2)), lines.list))
-      do.call(lines, c(list(x = c(ii - 0.03, ii + 0.03), y = rep(end.points[2], 2)), lines.list))
+      do.call(lines, c(list(x = rep(x[ii], 2), y = end.points), lines.list))
+      do.call(lines, c(list(x = c(x[ii] - 0.03, x[ii] + 0.03), y = rep(end.points[1], 2)), lines.list))
+      do.call(lines, c(list(x = c(x[ii] - 0.03, x[ii] + 0.03), y = rep(end.points[2], 2)), lines.list))
       
     }
   }
