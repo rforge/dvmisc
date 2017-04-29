@@ -24,6 +24,18 @@ list.override <- function(list1, list2) {
 }
 
 
+# Check if numeric value is in between two other values
+inside <- function(x, ends, inclusive = TRUE) {
+  
+  if (inclusive) {
+    x >= ends[1] & x <= ends[2]
+  } else {
+    x > ends[1] & x < ends[2]
+  }
+  
+}
+
+
 # Create fixed number of groups covering range of input vector x
 interval.groups <- function(x, groups = 5, ...) {
   
