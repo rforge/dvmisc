@@ -16,6 +16,9 @@ Numeric value.
   \item{ends}{
 Numeric vector of length 2 indicating the endpoints for the interval of interest.
 }
+  \item{inclusive}{
+Logical value indicating whether endpoints should be included. If TRUE, tests whether x is >= ends[1] and <= ends[2]; if FALSE, tests whether x is > ends[1] and < ends[2].
+}
 }
 \details{
 NA
