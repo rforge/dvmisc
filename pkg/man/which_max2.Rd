@@ -47,5 +47,5 @@ set.seed(123)
 which.max2(x)
 
 # Get vector index for first maximum
-which.max2(x, only.first = T, arr.ind = F)
+which.max2(x, only.first = TRUE, arr.ind = FALSE)
 }

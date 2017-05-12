@@ -406,7 +406,7 @@ which.min2 <- function(x, only.first = FALSE, arr.ind = TRUE) {
   loc <- which(x == min(x), arr.ind = arr.ind)
   if (only.first) {
     if (is.matrix(loc)) {
-      loc <- loc[1, , drop = F] 
+      loc <- loc[1, , drop = FALSE] 
     } else {
       loc <- loc[1]
     }
@@ -421,7 +421,7 @@ which.max2 <- function(x, only.first = FALSE, arr.ind = TRUE) {
   loc <- which(x == max(x), arr.ind = arr.ind)
   if (only.first) {
     if (is.matrix(loc)) {
-      loc <- loc[1, , drop = F]
+      loc <- loc[1, , drop = FALSE]
     } else {
       loc <- loc[1]
     }

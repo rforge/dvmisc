@@ -47,5 +47,5 @@ set.seed(123)
 which.min2(x)
 
 # Get vector index for first minimum
-which.min2(x, only.first = T, arr.ind = F)
+which.min2(x, only.first = TRUE, arr.ind = FALSE)
 }
