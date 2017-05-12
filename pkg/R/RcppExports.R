@@ -396,3 +396,40 @@ logodds.graph <- function(y, group, error.bars = "none", alpha = 0.05,
   }
   
 }
+
+
+# Versions of which.min and which.max that gives row/column positions for matrices.
+(x <- matrix(rpois(n = 9, lambda = 3), ncol = 3))
+(x.vec <- as.vector(x))
+which.min2 <- function(x, only.first = FALSE, arr.ind = TRUE) {
+  
+  loc <- which(x == min(x), arr.ind = arr.ind)
+  if (only.first) {
+    if (is.matrix(loc)) {
+      loc <- loc[1, , drop = F] 
+    } else {
+      loc <- loc[1]
+    }
+  }
+  return(loc)
+  
+}
+
+
+which.max2 <- function(x, only.first = FALSE, arr.ind = TRUE) {
+  
+  loc <- which(x == max(x), arr.ind = arr.ind)
+  if (only.first) {
+    if (is.matrix(loc)) {
+      loc <- loc[1, , drop = F]
+    } else {
+      loc <- loc[1]
+    }
+  }
+  return(loc)
+  
+}
+
+
+
+

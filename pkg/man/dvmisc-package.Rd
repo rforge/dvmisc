@@ -13,7 +13,7 @@ A collection of general-purpose R functions, most of which are either simple fun
 Package: \tab dvmisc\cr
 Type: \tab Package\cr
 Version: \tab 1.1.1\cr
-Date: \tab 2017-05-04\cr
+Date: \tab 2017-05-12\cr
 License: \tab GPL-2\cr
 }
 The following functions are included:
@@ -25,7 +25,9 @@ The following functions are included:
 \code{\link{bmi3}}\cr
 \code{\link{bmi4}}\cr
 \code{\link{means.graph}}\cr
-\code{\link{logodds.graph}}
+\code{\link{logodds.graph}}\cr
+\code{\link{which.min2}}\cr
+\code{\link{which.max2}}
 }
 \author{
 Dane R. Van Domelen
