@@ -4,7 +4,9 @@
 Version of which.max Compatible with Vector or Matrix Input
 }
 \description{
-Similar to base function which.max, but with two extra features: (1) Can request position of first maximum or position of all maximums; (2) For matrix x, can request either vector position or row/column.
+Similar to base R function \code{\link{which.max}}, but with two extra features:
+(1) Can request position of first maximum or position of all maximums; (2) For
+matrix \code{x}, can request either vector position or row/column.
 }
 \usage{
 which.max2(x, only.first = FALSE, arr.ind = TRUE)
@@ -14,23 +16,30 @@ which.max2(x, only.first = FALSE, arr.ind = TRUE)
 Numeric vector or matrix.
 }
   \item{only.first}{
-If TRUE, returns position of only the first maximum (like base R which.max); if FALSE, returns position of all maximums.
+If \code{TRUE}, returns position of only the first maximum (like base R
+\code{\link{which.max}}); if \code{FALSE}, returns position of all maximums.
 }
   \item{arr.ind}{
-Only used if x is a matrix. If TRUE, returns row/column index of maximum; if FALSE, returns vector position of maximum (like base R which.max).
+Only used if \code{x} is a matrix. If \code{TRUE}, returns row/column index of
+maximum; if \code{FALSE}, returns vector position of maximum (like base R
+\code{\link{which.max}}).
 }
 }
 \details{
 NA
 }
 \value{
-If x is a vector or x is a matrix and arr.ind is TRUE, a numeric value or vector giving the vector position of the maximum(s). If x is a matrix and arr.ind is TRUE, a numeric matrix giving the row and column positions of the maximum(s). 
+If \code{x} is a vector, or \code{x} is a matrix and \code{arr.ind = TRUE}, a
+numeric value or vector giving the vector position of the maximum(s). If
+\code{x} is a matrix and \code{arr.ind = TRUE}, a numeric matrix giving the row
+and column positions of the maximum(s).
 }
 \note{
 NA
 }
 \references{
-Acknowledgment: This material is based upon work supported by the National Science Foundation Graduate Research Fellowship under Grant No. DGE-0940903.
+Acknowledgment: This material is based upon work supported by the National
+Science Foundation Graduate Research Fellowship under Grant No. DGE-0940903.
 }
 \author{
 Dane R. Van Domelen

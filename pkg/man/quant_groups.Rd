@@ -4,7 +4,8 @@
 Split Continuous Variable into Quantile Groups
 }
 \description{
-Splits a continuous variable into quantiles groups. Basically combines quantile and cut into a single function.
+Splits a continuous variable into quantiles groups. Basically combines
+\code{\link{quantile}} and \code{\link{cut}} into a single function.
 }
 \usage{
 quant.groups(x, groups = 5, ...)
@@ -17,7 +18,7 @@ Numeric vector.
 Numeric value indicating how many quantile groups should be created.
 }
   \item{...}{
-Further arguments to pass to quantile or cut functions.
+Further arguments to pass to \code{\link{quantile}} or \code{\link{cut}}.
 }
 }
 \details{
@@ -30,7 +31,8 @@ Factor variable.
 NA
 }
 \references{
-Acknowledgment: This material is based upon work supported by the National Science Foundation Graduate Research Fellowship under Grant No. DGE-0940903.
+Acknowledgment: This material is based upon work supported by the National
+Science Foundation Graduate Research Fellowship under Grant No. DGE-0940903.
 }
 \author{
 Dane R. Van Domelen

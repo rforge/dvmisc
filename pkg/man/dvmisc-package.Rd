@@ -6,7 +6,9 @@
 Miscellaneous General-Purpose Functions
 }
 \description{
-A collection of general-purpose R functions, most of which are either simple functions that do something convenient (e.g. create quantile groups, assess linearity in logistic regression) or faster versions of base R functions (e.g. run length encoding).
+A collection of general-purpose R functions, most of which are simple functions
+that do something convenient, e.g. create equal-interval groups, assess
+linearity in logistic regression, or extract MSE from a fitted regression model.
 }
 \details{
 \tabular{ll}{
@@ -27,7 +29,8 @@ The following functions are included:
 \code{\link{means.graph}}\cr
 \code{\link{logodds.graph}}\cr
 \code{\link{which.min2}}\cr
-\code{\link{which.max2}}
+\code{\link{which.max2}}\cr
+\code{\link{get.mse}}
 }
 \author{
 Dane R. Van Domelen
@@ -35,7 +38,8 @@ Dane R. Van Domelen
 Maintainer: Dane R. Van Domelen <vandomed@gmail.com>
 }
 \references{
-Acknowledgment: This material is based upon work supported by the National Science Foundation Graduate Research Fellowship under Grant No. DGE-0940903.
+Acknowledgment: This material is based upon work supported by the National
+Science Foundation Graduate Research Fellowship under Grant No. DGE-0940903.
 }
 \keyword{ package }
 \examples{

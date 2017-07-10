@@ -42,7 +42,7 @@ inside <- function(x, ends, inclusive = TRUE) {
 interval.groups <- function(x, groups = 5, ...) {
 
   # Figure out break points to split x into even intervals spanning its range
-  x.range <- range(x, na.rm = T)
+  x.range <- range(x, na.rm = TRUE)
   cut.breaks <- seq(x.range[1], x.range[2], diff(x.range) / groups)
   cut.breaks[c(1, length(cut.breaks))] <- c(-Inf, Inf)
 
@@ -65,10 +65,10 @@ interval.groups <- function(x, groups = 5, ...) {
 quant.groups <- function(x, groups = 5, ...) {
 
   # Calculate quantiles
-  quantiles <- quantile(x, probs = seq(0, 1, 1 / groups), na.rm = T, ...)
+  quantiles <- quantile(x, probs = seq(0, 1, 1 / groups), na.rm = TRUE, ...)
 
   # Create quantile groups
-  groups <- cut(x, breaks = quantiles, include.lowest = T, ...)
+  groups <- cut(x, breaks = quantiles, include.lowest = TRUE, ...)
 
   # Print message and return groups
   num.missing <- sum(is.na(groups))
@@ -82,7 +82,7 @@ quant.groups <- function(x, groups = 5, ...) {
 
 
 # Create 3 BMI groups
-bmi3 <- function(x, labels = T) {
+bmi3 <- function(x, labels = TRUE) {
   if (labels) {
     y <- cut(x, breaks = c(-Inf, 25, 30, Inf), right = F,
              labels = c("Normal weight", "Overweight", "Obese"))
@@ -94,7 +94,7 @@ bmi3 <- function(x, labels = T) {
 
 
 # Create 4 BMI groups
-bmi4 <- function(x, labels = T) {
+bmi4 <- function(x, labels = TRUE) {
   if (labels) {
     y <- cut(x, breaks = c(-Inf, 18.5, 25, 30, Inf), right = F,
              labels = c("Underweight", "Normal weight", "Overweight", "Obese"))

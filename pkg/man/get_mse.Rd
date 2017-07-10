@@ -30,7 +30,7 @@ If \code{TRUE}, function returns a variance estimate for the MSE, defined as
 NA
 }
 \value{
-If \code{var = FALSE}, numeric value indicating the MSE; if
+If \code{var.estimate = FALSE}, numeric value indicating the MSE; if
 \code{var.estimate = TRUE}, named numeric vector indicating both the MSE and a
 variance estimate for the MSE.
 }
@@ -38,7 +38,8 @@ variance estimate for the MSE.
 NA
 }
 \references{
-Acknowledgment: This material is based upon work supported by the National Science Foundation Graduate Research Fellowship under Grant No. DGE-0940903.
+Acknowledgment: This material is based upon work supported by the National
+Science Foundation Graduate Research Fellowship under Grant No. DGE-0940903.
 }
 \author{
 Dane R. Van Domelen

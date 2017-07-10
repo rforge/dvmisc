@@ -4,7 +4,9 @@
 Version of which.min Compatible with Vector or Matrix Input
 }
 \description{
-Similar to base function which.min, but with two extra features: (1) Can request position of first minimum or position of all minimums; (2) For matrix x, can request either vector position or row/column.
+Similar to base R function \code{\link{which.min}}, but with two extra features:
+(1) Can request position of first minimum or position of all minimums; (2) For
+matrix \code{x}, can request either vector position or row/column.
 }
 \usage{
 which.min2(x, only.first = FALSE, arr.ind = TRUE)
@@ -14,23 +16,30 @@ which.min2(x, only.first = FALSE, arr.ind = TRUE)
 Numeric vector or matrix.
 }
   \item{only.first}{
-If TRUE, returns position of only the first minimum (like base R which.min); if FALSE, returns position of all minimums.
+If \code{TRUE}, returns position of only the first minimum (like base R
+\code{\link{which.min}}); if \code{FALSE}, returns position of all minimums.
 }
   \item{arr.ind}{
-Only used if x is a matrix. If TRUE, returns row/column index of minimum; if FALSE, returns vector position of minimum (like base R which.min).
+Only used if \code{x} is a matrix. If \code{TRUE}, returns row/column index of
+minimum; if \code{FALSE}, returns vector position of minimum (like base R
+\code{\link{which.min}}).
 }
 }
 \details{
 NA
 }
 \value{
-If x is a vector or x is a matrix and arr.ind is TRUE, a numeric value or vector giving the vector position of the minimum(s). If x is a matrix and arr.ind is TRUE, a numeric matrix giving the row and column positions of the minimum(s). 
+If \code{x} is a vector, or \code{x} is a matrix and \code{arr.ind = TRUE}, a
+numeric value or vector giving the vector position of the minimum(s). If
+\code{x} is a matrix and \code{arr.ind = TRUE}, a numeric matrix giving the row
+and column positions of the minimum(s).
 }
 \note{
 NA
 }
 \references{
-Acknowledgment: This material is based upon work supported by the National Science Foundation Graduate Research Fellowship under Grant No. DGE-0940903.
+Acknowledgment: This material is based upon work supported by the National
+Science Foundation Graduate Research Fellowship under Grant No. DGE-0940903.
 }
 \author{
 Dane R. Van Domelen

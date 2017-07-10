@@ -4,7 +4,8 @@
 Check Whether a Numeric Value is in Between Two Other Numeric Values
 }
 \description{
-If inclusive is TRUE, code is: x >= ends[1] & x <= ends[2]. If inclusive is FALSE, code is: x > ends[1] & x < ends[2]. 
+If \code{inclusive = TRUE}, code is: \code{x >= ends[1] & x <= ends[2]}. If
+\code{inclusive = FALSE}, code is: \code{x > ends[1] & x < ends[2]}.
 }
 \usage{
 inside(x, ends, inclusive = TRUE)
@@ -14,23 +15,26 @@ inside(x, ends, inclusive = TRUE)
 Numeric value.
 }
   \item{ends}{
-Numeric vector of length 2 indicating the endpoints for the interval of interest.
+Numeric vector of length 2 indicating the endpoints for the interval of
+interest.
 }
   \item{inclusive}{
-Logical value indicating whether endpoints should be included. If TRUE, tests whether x is >= ends[1] and <= ends[2]; if FALSE, tests whether x is > ends[1] and < ends[2].
+Logical value indicating whether endpoints should be included.
 }
 }
 \details{
 NA
 }
 \value{
-Logical value indicating whether x falls inside ends[1] and ends[2].
+Logical value indicating whether \code{x} falls inside \code{ends[1]} and
+\code{ends[2]}.
 }
 \note{
 NA
 }
 \references{
-Acknowledgment: This material is based upon work supported by the National Science Foundation Graduate Research Fellowship under Grant No. DGE-0940903.
+Acknowledgment: This material is based upon work supported by the National
+Science Foundation Graduate Research Fellowship under Grant No. DGE-0940903.
 }
 \author{
 Dane R. Van Domelen
