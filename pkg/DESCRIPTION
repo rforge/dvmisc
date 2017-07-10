@@ -5,10 +5,7 @@ Version: 1.1.1
 Date: 2017-07-10
 Author: Dane R. Van Domelen
 Maintainer: Dane R. Van Domelen <vandomed@gmail.com>
-Description: A collection of general-purpose R functions, most of which are 
-simple functions that do something convenient, e.g. create equal-interval 
-groups, assess linearity in logistic regression, or extract MSE from a fitted 
-regression model.
+Description: A collection of general-purpose R functions, most of which are simple functions that do something convenient, e.g. create equal-interval groups, assess linearity in logistic regression, or extract MSE from a fitted regression model.
 LazyData: true
 License: GPL-2
 Depends: R (>= 3.0.0), rbenchmark
