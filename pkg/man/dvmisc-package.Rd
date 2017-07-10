@@ -15,7 +15,7 @@ linearity in logistic regression, or extract MSE from a fitted regression model.
 Package: \tab dvmisc\cr
 Type: \tab Package\cr
 Version: \tab 1.1.1\cr
-Date: \tab 2017-05-12\cr
+Date: \tab 2017-07-10\cr
 License: \tab GPL-2\cr
 }
 The following functions are included:
