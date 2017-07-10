@@ -1,7 +1,5 @@
-#useDynLib(dvmisc)
 exportPattern("^[[:alpha:]]+")
-importFrom(Rcpp, "evalCpp")
 importFrom("graphics", "axis", "lines", "plot", "legend")
-importFrom("stats", "qnorm", "qt", "sd", "aov", "binom.test", "prop.test", 
+importFrom("stats", "qnorm", "qt", "sd", "aov", "binom.test", "prop.test",
            "t.test", "chisq.test", "fisher.test", "quantile")
 import(rbenchmark)

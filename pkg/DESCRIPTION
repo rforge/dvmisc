@@ -2,12 +2,11 @@ Package: dvmisc
 Type: Package
 Title: Miscellaneous General-Purpose Functions
 Version: 1.1.1
-Date: 2017-05-12
+Date: 2017-07-10
 Author: Dane R. Van Domelen
 Maintainer: Dane R. Van Domelen <vandomed@gmail.com>
-Description: A collection of general-purpose R functions, most of which are either simple functions that do something convenient (e.g. create equal-interval groups, assess linearity in logistic regression) or faster versions of base R functions (e.g. run length encoding).
+Description: A collection of general-purpose R functions, most of which are simple functions that do something convenient, e.g. create equal-interval groups, assess linearity in logistic regression, or extract MSE from a fitted regression model.
 LazyData: true
 License: GPL-2
 Depends: R (>= 3.0.0), rbenchmark
-Imports: Rcpp (>= 0.11.0), graphics, stats
-LinkingTo: Rcpp
+Imports: graphics, stats

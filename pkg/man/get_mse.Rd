@@ -1,0 +1,62 @@
+\name{get.mse}
+\alias{get.mse}
+\title{
+Extract Mean Squared Error (MSE) from Fitted Regression Model
+}
+\description{
+The MSE, defined as the sum of the squared residuals divided by \code{n-p}
+(\code{n} = number of observations, \code{p} = number of regression
+coefficients), is an unbiased estimator for the error variance in a linear
+regression model. This is a convenience function that extracts the MSE from a
+fitted \code{\link{lm}} or \code{\link{glm}} object. The code is
+\code{rev(anova(model.fit)$"Mean Sq")[1]} if \code{model.fit} is a
+\code{\link{lm}} object and
+\code{sum(model.fit$residuals^2) / model.fit$df.residual} if \code{model.fit}
+is a \code{\link{glm}} object.
+}
+\usage{
+get.mse(model.fit, var.estimate = FALSE)
+}
+\arguments{
+  \item{model.fit}{
+Fitted regression model returned from \code{\link{lm}} or \code{\link{glm}}.
+}
+  \item{var.estimate}{
+If \code{TRUE}, function returns a variance estimate for the MSE, defined as
+\code{2 * MSE^2 / (n - p)}.
+}
+}
+\details{
+NA
+}
+\value{
+If \code{var = FALSE}, numeric value indicating the MSE; if
+\code{var.estimate = TRUE}, named numeric vector indicating both the MSE and a
+variance estimate for the MSE.
+}
+\note{
+NA
+}
+\references{
+Acknowledgment: This material is based upon work supported by the National Science Foundation Graduate Research Fellowship under Grant No. DGE-0940903.
+}
+\author{
+Dane R. Van Domelen
+}
+\seealso{
+NA
+}
+\examples{
+# Generate 100 values for linear regression: Y = 0.5 + 1.25 X + e, e ~ N(0, 1)
+set.seed(123)
+x <- rnorm(100)
+y <- 0.5 + 1.25 * x + rnorm(100, sd = 1)
+
+# Fit regression model using lm and using glm
+lm.fit <- lm(y ~ x)
+glm.fit <- glm(y ~ x)
+
+# Extract MSE from lm.fit and glm.fit
+get.mse(lm.fit)
+get.mse(glm.fit)
+}
