@@ -491,12 +491,12 @@ cmedian <- function(x, na.rm = TRUE, ...) {
 cquantile <- function(x, na.rm = TRUE, ...) {
   quantile(x = x, na.rm = na.rm, ...)
 }
-cmin <- function(x, na.rm = TRUE, ...) {
-  min(x, na.rm = na.rm, ...)
+cmin <- function(..., na.rm = TRUE) {
+  min(..., na.rm = na.rm)
 }
-cmax <- function(x, na.rm = TRUE, ...) {
-  max(x, na.rm = na.rm, ...)
+cmax <- function(..., na.rm = TRUE) {
+  max(..., na.rm = na.rm)
 }
-crange <- function(x, na.rm = TRUE, ...) {
-  range(x, na.rm. = na.rm, ...)
+crange <- function(..., na.rm = TRUE) {
+  range(..., na.rm = na.rm)
 }
