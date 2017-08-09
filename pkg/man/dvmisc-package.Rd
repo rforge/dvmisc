@@ -15,7 +15,7 @@ linearity in logistic regression, or extract MSE from a fitted regression model.
 Package: \tab dvmisc\cr
 Type: \tab Package\cr
 Version: \tab 1.1.1\cr
-Date: \tab 2017-07-10\cr
+Date: \tab 2017-08-08\cr
 License: \tab GPL-2\cr
 }
 The following functions are included:
@@ -30,7 +30,14 @@ The following functions are included:
 \code{\link{logodds.graph}}\cr
 \code{\link{which.min2}}\cr
 \code{\link{which.max2}}\cr
-\code{\link{get.mse}}
+\code{\link{get.mse}}\cr
+\code{\link{cmean}}\cr
+\code{\link{cweighted.mean}}\cr
+\code{\link{cmedian}}\cr
+\code{\link{cquantile}}\cr
+\code{\link{cmin}}\cr
+\code{\link{cmax}}\cr
+\code{\link{crange}}
 }
 \author{
 Dane R. Van Domelen

@@ -476,3 +476,27 @@ get.mse <- function(model.fit, var.estimate = FALSE) {
   return(mse)
 
 }
+
+
+# "Complete data" versions of mean, median, etc., with default na.rm = TRUE
+cmean <- function(x, na.rm = TRUE, ...) {
+  mean(x = x, na.rm = na.rm, ...)
+}
+cweighted.mean <- function(x, w, na.rm = TRUE, ...) {
+  weighted.mean(x = x, w = w, na.rm = na.rm, ...)
+}
+cmedian <- function(x, na.rm = TRUE, ...) {
+  median(x = x, na.rm = na.rm, ...)
+}
+cquantile <- function(x, na.rm = TRUE, ...) {
+  quantile(x = x, na.rm = na.rm, ...)
+}
+cmin <- function(x, na.rm = TRUE, ...) {
+  min(x, na.rm = na.rm, ...)
+}
+cmax <- function(x, na.rm = TRUE, ...) {
+  max(x, na.rm = na.rm, ...)
+}
+crange <- function(x, na.rm = TRUE, ...) {
+  range(x, na.rm. = na.rm, ...)
+}
