@@ -1,6 +1,7 @@
 exportPattern("^[[:alpha:]]+")
 importFrom("graphics", "axis", "lines", "plot", "legend")
 importFrom("stats", "qnorm", "qt", "sd", "aov", "binom.test", "prop.test",
-           "t.test", "chisq.test", "fisher.test", "quantile", "anova")
+           "t.test", "chisq.test", "fisher.test", "quantile", "anova",
+           "median", "weighted.mean")
 importFrom("MASS", "fitdistr")
 import(rbenchmark)
