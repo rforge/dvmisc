@@ -7,15 +7,16 @@ Miscellaneous General-Purpose Functions
 }
 \description{
 A collection of general-purpose R functions, most of which are simple functions
-that do something convenient, e.g. create equal-interval groups, assess
-linearity in logistic regression, or extract MSE from a fitted regression model.
+that do something convenient, e.g. easily create histogram with fitted PDF/PMF
+curve, create equal-interval groups, assess linearity in logistic regression, or
+extract MSE from a fitted regression model.
 }
 \details{
 \tabular{ll}{
 Package: \tab dvmisc\cr
 Type: \tab Package\cr
 Version: \tab 1.1.1\cr
-Date: \tab 2017-08-08\cr
+Date: \tab 2017-08-15\cr
 License: \tab GPL-2\cr
 }
 The following functions are included:
@@ -37,7 +38,8 @@ The following functions are included:
 \code{\link{cquantile}}\cr
 \code{\link{cmin}}\cr
 \code{\link{cmax}}\cr
-\code{\link{crange}}
+\code{\link{crange}}\cr
+\code{\link{histo}}
 }
 \author{
 Dane R. Van Domelen

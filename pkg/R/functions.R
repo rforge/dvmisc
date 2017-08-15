@@ -500,3 +500,197 @@ cmax <- function(..., na.rm = TRUE) {
 crange <- function(..., na.rm = TRUE) {
   range(..., na.rm = na.rm)
 }
+
+
+# Histogram with some added features
+histo <- function(x,
+                  curve = "none", curve.shift = NULL,
+                  integer.breaks = NULL,
+                  points.list = NULL,
+                  ...) {
+
+  # Create list with ... arguments
+  extra.args <- list(...)
+
+  # Extract any parameters (i.e. arguments NOT for hist) included in ...
+  if (!is.null(extra.args)) {
+    loc <- which(names(extra.args) == "size")
+    if (length(loc) == 1) {
+      size <- extra.args[[loc]]
+      extra.args <- extra.args[-loc]
+    }
+    loc <- which(names(extra.args) == "N")
+    if (length(loc) == 1) {
+      N <- extra.args[[loc]]
+      extra.args <- extra.args[-loc]
+    }
+  }
+
+  # If integer.breaks is NULL, set to TRUE if x takes on whole numbers with 20
+  # or fewer distinct values, else set to FALSE
+  if (is.null(integer.breaks)) {
+    integer.breaks <- all(x %% 1 == 0) & length(unique(x)) <= 10
+  }
+
+  # If right is not specified or integer.breaks is TRUE, set to TRUE
+  if (! "right" %in% names(extra.args) | integer.breaks) {
+    extra.args$right <- TRUE
+  }
+
+  # If integer.breaks is TRUE, make breaks a vector of integers
+  # covering the range of x
+  if (integer.breaks) {
+    extra.args$breaks <- seq(floor(min(x)) - 1, ceiling(max(x)), 1)
+  }
+
+  # If freq is not specified, set to FALSE
+  if (! "freq" %in% names(extra.args)) {
+    extra.args$freq <- FALSE
+  }
+
+  # Create histogram
+  if (integer.breaks) {
+    hist.fig <- do.call(hist, c(list(x = quote(x), xaxt = "n"), extra.args))
+    axis(side = 1, at = hist.fig$mids, label = hist.fig$breaks[-1])
+  } else {
+    hist.fig <- do.call(hist, c(list(x = quote(x)), extra.args))
+  }
+
+  # Add pdf curve if requested
+  if (curve != "none") {
+
+    if (curve == "beta") {
+
+      theta.hat <- fitdistr(x, "beta", start = list(shape1 = 0.5,
+                                                    shape2 = 0.5))$estimate
+      x.vals <- seq(min(x), max(x), diff(range(x)) / 1000)
+      y.vals <- dbeta(x = x.vals, shape1 = theta.hat[1], shape2 = theta.hat[2])
+
+    } else if (curve == "binom") {
+
+      # Need user-input value for size
+      p.hat <- mean(x) / size
+      x.vals <- seq(min(x), max(x), 1)
+      y.vals <- dbinom(x = x.vals, size = size, prob = p.hat)
+
+    } else if (curve == "cauchy") {
+
+      theta.hat <- fitdistr(x, "cauchy")$estimate
+      x.vals <- seq(min(x), max(x), diff(range(x)) / 1000)
+      y.vals <-
+        dcauchy(x = x.vals, location = theta.hat[1], scale = theta.hat[2])
+      do.call(points, c(list(x = x.vals, y = y.vals, type = "l"), points.list))
+
+    } else if (curve == "chisq") {
+
+      theta.hat <- fitdistr(x, "chi-squared", start = list(df = 1))$estimate
+      x.vals <- seq(min(x), max(x), diff(range(x)) / 1000)
+      y.vals <- dchisq(x = x.vals, df = theta.hat[1])
+
+    } else if (curve == "exp") {
+
+      theta.hat <- fitdistr(x, "exponential")$estimate
+      x.vals <- seq(min(x), max(x), diff(range(x)) / 1000)
+      y.vals <- dexp(x = x.vals, rate = theta.hat)
+
+    } else if (curve == "f") {
+
+      theta.hat <- fitdistr(x, "f", start = list(df1 = 1, df2 = 2))$estimate
+      x.vals <- seq(min(x), max(x), diff(range(x)) / 1000)
+      y.vals <- df(x = x.vals, df1 = theta.hat[1], df2 = theta.hat[2])
+
+    } else if (curve == "gamma") {
+
+      theta.hat <- fitdistr(x, "gamma",
+                            start = list(shape = 1, scale = 1))$estimate
+      x.vals <- seq(min(x), max(x), diff(range(x)) / 1000)
+      y.vals <- dgamma(x = x.vals, shape = theta.hat[1], scale = theta.hat[2])
+      do.call(points, c(list(x = x.vals, y = y.vals, type = "l"), points.list))
+
+    } else if (curve == "geom") {
+
+      theta.hat <- fitdistr(x, "geometric")$estimate
+      x.vals <- seq(min(x), max(x), 1)
+      y.vals <- dgeom(x = x.vals, prob = theta.hat)
+
+    } else if (curve == "hyper") {
+
+      # Need user-input value for N
+      loglik.f <- function(m) {
+        n <- N - m
+        ll <- sum(log(choose(m, x) * choose(n, k - x) / choose(n + m, k)))
+        return(-ll)
+      }
+      m.hat <- round(nlminb(objective = loglik.f, start = k)$par)
+      x.vals <- seq(min(x), max(x), 1)
+      y.vals <- dhyper(x = x.vals, m = m.hat, n = N - m.hat, k = k)
+
+    } else if (curve == "lnorm") {
+
+      theta.hat <- fitdistr(x, "lognormal")$estimate
+      x.vals <- seq(min(x), max(x), diff(range(x)) / 1000)
+      y.vals <- dlnorm(x = x.vals, mean = theta.hat[1], sd = theta.hat[2])
+
+    } else if (curve == "nbinom") {
+
+      loglik.f <- function(p) {
+        ll <- sum(log(gamma(x + size) / (gamma(size) * factorial(x)) *
+                        p^size * (1 - p)^x))
+        return(-ll)
+      }
+      p.hat <- nlminb(objective = loglik.f, start = 0.5)$par
+      x.vals <- seq(min(x), max(x), 1)
+      y.vals <- dnbinom(x = x.vals, size = size, prob = p.hat)
+
+    } else if (curve == "norm") {
+
+      theta.hat <- fitdistr(x, "normal")$estimate
+      x.vals <- seq(min(x), max(x), diff(range(x)) / 1000)
+      y.vals <- dnorm(x = x.vals, mean = theta.hat[1], sd = theta.hat[2])
+
+    } else if (curve == "pois") {
+
+      theta.hat <- fitdistr(x, "poisson")$estimate
+      x.vals <- seq(min(x), max(x), 1)
+      y.vals <- dpois(x = x.vals, lambda = theta.hat)
+
+    } else if (curve == "t") {
+
+      theta.hat <- fitdistr(x, "t")$estimate
+      x.vals <- seq(min(x), max(x), diff(range(x)) / 1000)
+      y.vals <- dt(x = x.vals, df = theta.hat[3])
+
+    } else if (curve == "unif") {
+
+      min.hat <- min(x)
+      max.hat <- max(x)
+      x.vals <- seq(min(x), max(x), diff(range(x)) / 1000)
+      y.vals <- dunif(x = x.vals, min = min.hat, max = max.hat)
+
+    } else if (curve == "weibull") {
+
+      theta.hat <- fitdistr(x, "weibull")$estimate
+      x.vals <- seq(min(x), max(x), diff(range(x)) / 1000)
+      y.vals <- dweibull(x = x.vals, shape = theta.hat[1], scale = theta.hat[2])
+
+    }
+
+    # If curve.shift is NULL and all values in x are integers, figure out how to
+    # shift curve to make it match up with the histogram bars
+    if (is.null(curve.shift)) {
+      if (all(x %% 1 == 0)) {
+        curve.shift <- ifelse(extra.args$right, -0.5, 0.5)
+      } else {
+        curve.shift <- 0
+      }
+    }
+
+    # Add overlaying curve
+    points.list <- list.override(list1 = list(type = "l"),
+                                 list2 = points.list)
+    do.call(points, c(list(x = x.vals + curve.shift, y = y.vals),
+                      points.list))
+
+  }
+
+}
