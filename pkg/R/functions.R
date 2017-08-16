@@ -634,7 +634,7 @@ histo <- function(x,
 
       theta.hat <- fitdistr(x, "lognormal")$estimate
       x.vals <- seq(min(x), max(x), diff(range(x)) / 1000)
-      y.vals <- dlnorm(x = x.vals, mean = theta.hat[1], sd = theta.hat[2])
+      y.vals <- dlnorm(x = x.vals, meanlog = theta.hat[1], sdlog = theta.hat[2])
 
     } else if (curve == "nbinom") {
 
@@ -643,7 +643,7 @@ histo <- function(x,
                         p^size * (1 - p)^x))
         return(-ll)
       }
-      p.hat <- nlminb(objective = loglik.f,nbinom, start = 0.5)$par
+      p.hat <- nlminb(objective = loglik.f.nbinom, start = 0.5)$par
       x.vals <- seq(min(x), max(x), 1)
       y.vals <- dnbinom(x = x.vals, size = size, prob = p.hat)
 
