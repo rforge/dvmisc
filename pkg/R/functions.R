@@ -524,6 +524,11 @@ histo <- function(x,
       N <- extra.args[[loc]]
       extra.args <- extra.args[-loc]
     }
+    loc <- which(names(extra.args) == "k")
+    if (length(loc) == 1) {
+      k <- extra.args[[loc]]
+      extra.args <- extra.args[-loc]
+    }
   }
 
   # If integer.breaks is NULL, set to TRUE if x takes on whole numbers with 20
@@ -551,7 +556,7 @@ histo <- function(x,
   # Create histogram
   if (integer.breaks) {
     hist.fig <- do.call(hist, c(list(x = quote(x), xaxt = "n"), extra.args))
-    axis(side = 1, at = hist.fig$mids, label = hist.fig$breaks[-1])
+    axis(side = 1, at = hist.fig$mids, labels = hist.fig$breaks[-1])
   } else {
     hist.fig <- do.call(hist, c(list(x = quote(x)), extra.args))
   }
@@ -615,13 +620,13 @@ histo <- function(x,
 
     } else if (curve == "hyper") {
 
-      # Need user-input value for N
-      loglik.f <- function(m) {
+      # Need user-input values for N, k
+      loglik.f.hyper <- function(m) {
         n <- N - m
         ll <- sum(log(choose(m, x) * choose(n, k - x) / choose(n + m, k)))
         return(-ll)
       }
-      m.hat <- round(nlminb(objective = loglik.f, start = k)$par)
+      m.hat <- round(nlminb(objective = loglik.f.hyper, start = k)$par)
       x.vals <- seq(min(x), max(x), 1)
       y.vals <- dhyper(x = x.vals, m = m.hat, n = N - m.hat, k = k)
 
@@ -633,12 +638,12 @@ histo <- function(x,
 
     } else if (curve == "nbinom") {
 
-      loglik.f <- function(p) {
+      loglik.f.nbinom <- function(p) {
         ll <- sum(log(gamma(x + size) / (gamma(size) * factorial(x)) *
                         p^size * (1 - p)^x))
         return(-ll)
       }
-      p.hat <- nlminb(objective = loglik.f, start = 0.5)$par
+      p.hat <- nlminb(objective = loglik.f,nbinom, start = 0.5)$par
       x.vals <- seq(min(x), max(x), 1)
       y.vals <- dnbinom(x = x.vals, size = size, prob = p.hat)
 

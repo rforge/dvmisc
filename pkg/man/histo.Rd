@@ -6,7 +6,7 @@ Histogram with Added Options
 \description{
 Similar to base R function \code{\link{hist}}, but with two added features: (1)
 Can overlay a fitted probability density/mass function (PDF/PMF) for any
-univariate distribution supported in R (see \code{\link{?Distributions}}); and
+univariate distribution supported in R (see \code{\link{Distributions}}); and
 (2) Can generate more of a barplot type histogram, where each possible value
 gets its own bin centered over its value (useful for discrete variables with not
 too many possible values).
@@ -17,7 +17,6 @@ histo(x,
       integer.breaks = NULL,
       points.list = NULL,
       ...)
-
 }
 \arguments{
   \item{x}{
@@ -28,7 +27,8 @@ Character vector indicating which distribution should be used to add fitted
 PDF/PMF curve to the histogram. Possible values are \code{"none"},
 \code{"beta"}, \code{"binom"} (must specify \code{size}), \code{"cauchy"},
 \code{"chisq"}, \code{"exp"}, \code{"f"}, \code{"gamma"}, \code{"geom"},
-\code{"hyper"} (must specify \code{N}), \code{"lnorm"}, \code{"nbinom"} (must
+\code{"hyper"} (must specify total number of balls in urn, \code{N}, and number
+of balls drawn each time, \code{k}), \code{"lnorm"}, \code{"nbinom"} (must
 specify \code{size}), \code{"norm"}, \code{"pois"}, \code{"t"}, \code{"unif"},
 and \code{"weibull"}.
 }
@@ -48,7 +48,7 @@ to add the fitted PDF/PMF curve.
   \item{...}{
 May include arguments to pass to \code{\link{hist}} and/or parameter values
 needed for certain distributions (\code{size} if \code{curve = "binom"} or
-\code{curve = "nbinom"}, \code{N} if \code{curve = "hyper"}).
+\code{curve = "nbinom"}, \code{N} and \code{k} if \code{curve = "hyper"}).
 }
 }
 \details{
@@ -59,9 +59,9 @@ internally by default.
 
 To illustrate, suppose a particular bin represents (7, 10]. Its midpoint will be
 at \code{x = 8.5} on the graph. But if input values are whole numbers, this bin
-really only includes values of 8, 9}, and 10, which have a mean of \code{9}. So
-you really want \code{f(9)} to appear at \code{x = 8.5}. This requires shifting
-the curve to the left 0.5 units, i.e. setting \code{curve.shift = -0.5}.
+really only includes values of 8, 9, and 10, which have a mean of 9. So you
+really want \code{f(9)} to appear at \code{x = 8.5}. This requires shifting the
+curve to the left 0.5 units, i.e. setting \code{curve.shift = -0.5}.
 
 When \code{x} takes on whole numbers with not too many unique values, you may
 want the histogram to show one bin for each integer. You can do this by setting
