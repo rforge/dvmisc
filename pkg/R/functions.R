@@ -575,7 +575,7 @@ histo <- function(x,
 
       # Need user-input value for size
       p.hat <- mean(x) / size
-      x.vals <- seq(min(x), max(x), 1)
+      x.vals <- seq(round(min(x)), round(max(x)), 1)
       y.vals <- dbinom(x = x.vals, size = size, prob = p.hat)
 
     } else if (dis == "cauchy") {
@@ -615,7 +615,7 @@ histo <- function(x,
     } else if (dis == "geom") {
 
       theta.hat <- fitdistr(x, "geometric")$estimate
-      x.vals <- seq(min(x), max(x), 1)
+      x.vals <- seq(round(min(x)), round(max(x)), 1)
       y.vals <- dgeom(x = x.vals, prob = theta.hat)
 
     } else if (dis == "hyper") {
@@ -627,7 +627,7 @@ histo <- function(x,
         return(-ll)
       }
       m.hat <- round(nlminb(objective = loglik.f.hyper, start = k)$par)
-      x.vals <- seq(min(x), max(x), 1)
+      x.vals <- seq(round(min(x)), round(max(x)), 1)
       y.vals <- dhyper(x = x.vals, m = m.hat, n = N - m.hat, k = k)
 
     } else if (dis == "lnorm") {
@@ -644,7 +644,7 @@ histo <- function(x,
         return(-ll)
       }
       p.hat <- nlminb(objective = loglik.f.nbinom, start = 0.5)$par
-      x.vals <- seq(min(x), max(x), 1)
+      x.vals <- seq(round(min(x)), round(max(x)), 1)
       y.vals <- dnbinom(x = x.vals, size = size, prob = p.hat)
 
     } else if (dis == "norm") {
@@ -656,7 +656,7 @@ histo <- function(x,
     } else if (dis == "pois") {
 
       theta.hat <- fitdistr(x, "poisson")$estimate
-      x.vals <- seq(min(x), max(x), 1)
+      x.vals <- seq(round(min(x)), round(max(x)), 1)
       y.vals <- dpois(x = x.vals, lambda = theta.hat)
 
     } else if (dis == "t") {
