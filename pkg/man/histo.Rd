@@ -22,7 +22,7 @@ histo(x,
   \item{x}{
 Numeric vector of values.
 }
-  \code{dis}{
+  \item{dis}{
 Character vector indicating which distribution should be used to add fitted
 PDF/PMF to the histogram. Possible values are \code{"none"}, \code{"beta"},
 \code{"binom"} (must specify \code{size}), \code{"cauchy"}, \code{"chisq"},
@@ -31,16 +31,16 @@ specify total number of balls in urn, \code{N}, and number of balls drawn each
 time, \code{k}), \code{"lnorm"}, \code{"nbinom"} (must specify \code{size}),
 \code{"norm"}, \code{"pois"}, \code{"t"}, \code{"unif"}, and \code{"weibull"}.
 }
-  \code{dis.shift}{
+  \item{dis.shift}{
 Numeric value for shifting the fitted PDF/PMF along the x-axis of the
 histogram.
 }
-  \code{integer.breaks}{
+  \item{integer.breaks}{
 If \code{TRUE}, integers covering the range of \code{x} are used for breaks,
 so there is one bin for each integer. Useful for discrete distributions that
 don't take on too many unique values.
 }
-  \code{points.list}{
+  \item{points.list}{
 Optional list of inputs to pass to \code{\link{points}} function, which is used
 to add the fitted PDF/PMF.
 }
