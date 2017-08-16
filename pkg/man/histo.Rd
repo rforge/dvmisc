@@ -13,7 +13,7 @@ too many possible values).
 }
 \usage{
 histo(x,
-      curve = "none", curve.shift = NULL,
+      dis = "none", dis.shift = NULL,
       integer.breaks = NULL,
       points.list = NULL,
       ...)
@@ -22,18 +22,17 @@ histo(x,
   \item{x}{
 Numeric vector of values.
 }
-  \code{curve}{
+  \code{dis}{
 Character vector indicating which distribution should be used to add fitted
-PDF/PMF curve to the histogram. Possible values are \code{"none"},
-\code{"beta"}, \code{"binom"} (must specify \code{size}), \code{"cauchy"},
-\code{"chisq"}, \code{"exp"}, \code{"f"}, \code{"gamma"}, \code{"geom"},
-\code{"hyper"} (must specify total number of balls in urn, \code{N}, and number
-of balls drawn each time, \code{k}), \code{"lnorm"}, \code{"nbinom"} (must
-specify \code{size}), \code{"norm"}, \code{"pois"}, \code{"t"}, \code{"unif"},
-and \code{"weibull"}.
+PDF/PMF to the histogram. Possible values are \code{"none"}, \code{"beta"},
+\code{"binom"} (must specify \code{size}), \code{"cauchy"}, \code{"chisq"},
+\code{"exp"}, \code{"f"}, \code{"gamma"}, \code{"geom"}, \code{"hyper"} (must
+specify total number of balls in urn, \code{N}, and number of balls drawn each
+time, \code{k}), \code{"lnorm"}, \code{"nbinom"} (must specify \code{size}),
+\code{"norm"}, \code{"pois"}, \code{"t"}, \code{"unif"}, and \code{"weibull"}.
 }
-  \code{curve.shift}{
-Numeric value for shifting the fitted PDF/PMF curve along the x-axis of the
+  \code{dis.shift}{
+Numeric value for shifting the fitted PDF/PMF along the x-axis of the
 histogram.
 }
   \code{integer.breaks}{
@@ -43,25 +42,25 @@ don't take on too many unique values.
 }
   \code{points.list}{
 Optional list of inputs to pass to \code{\link{points}} function, which is used
-to add the fitted PDF/PMF curve.
+to add the fitted PDF/PMF.
 }
   \item{...}{
 May include arguments to pass to \code{\link{hist}} and/or parameter values
-needed for certain distributions (\code{size} if \code{curve = "binom"} or
-\code{curve = "nbinom"}, \code{N} and \code{k} if \code{curve = "hyper"}).
+needed for certain distributions (\code{size} if \code{dis = "binom"} or
+\code{dis = "nbinom"}, \code{N} and \code{k} if \code{dis = "hyper"}).
 }
 }
 \details{
 When \code{x} takes on whole numbers, you typically want to set
-\code{curve.shift = -0.5} if \code{right = TRUE} (\code{\link{hist}}'s default)
-and \code{curve.shift = 0.5} if \code{right = FALSE}. The function will do this
+\code{dis.shift = -0.5} if \code{right = TRUE} (\code{\link{hist}}'s default)
+and \code{dis.shift = 0.5} if \code{right = FALSE}. The function will do this
 internally by default.
 
 To illustrate, suppose a particular bin represents (7, 10]. Its midpoint will be
 at \code{x = 8.5} on the graph. But if input values are whole numbers, this bin
 really only includes values of 8, 9, and 10, which have a mean of 9. So you
 really want \code{f(9)} to appear at \code{x = 8.5}. This requires shifting the
-curve to the left 0.5 units, i.e. setting \code{curve.shift = -0.5}.
+curve to the left 0.5 units, i.e. setting \code{dis.shift = -0.5}.
 
 When \code{x} takes on whole numbers with not too many unique values, you may
 want the histogram to show one bin for each integer. You can do this by setting
@@ -70,7 +69,7 @@ want the histogram to show one bin for each integer. You can do this by setting
 unique values.
 }
 \value{
-Histogram with fitted PDF/PMF curve if requested.
+Histogram with fitted PDF/PMF if requested.
 }
 \references{
 Acknowledgment: This material is based upon work supported by the National
