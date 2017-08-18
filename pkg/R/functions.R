@@ -500,9 +500,23 @@ cmax <- function(..., na.rm = TRUE) {
 crange <- function(..., na.rm = TRUE) {
   range(..., na.rm = na.rm)
 }
+csd <- function(x, na.rm = TRUE) {
+  sd(x, na.rm = na.rm)
+}
+cvar <- function(x, na.rm = TRUE, ...) {
+  var(x, na.rm = na.rm, ...)
+}
+ccov <- function(..., use = "complete.obs") {
+  cov(..., use = use)
+}
+ccor <- function(..., use = "complete.obs") {
+  cor(..., use = use)
+}
 
 
 # Histogram with some added features
+# Note: Consider adding transformed-normal options, e.g. square root, etc.
+# Maybe "tnorm.sqrt", "tnorm.inverse", "tnorm.squared", "tnorm.cubed", "tnorm.boxcox"
 histo <- function(x,
                   dis = "none", dis.shift = NULL,
                   integer.breaks = NULL,
@@ -553,9 +567,18 @@ histo <- function(x,
     extra.args$freq <- FALSE
   }
 
+  # If xlab/main not specified, set
+  if (! "xlab" %in% names(extra.args)) {
+    extra.args$xlab <- deparse(substitute(x))
+  }
+  if (! "main" %in% names(extra.args)) {
+    extra.args$main <- paste("Histogram of ", deparse(substitute(x)), sep = "")
+  }
+
   # Create histogram
   if (integer.breaks) {
-    hist.fig <- do.call(hist, c(list(x = quote(x), xaxt = "n"), extra.args))
+    hist.fig <- do.call(hist, c(list(x = quote(x), xaxt = "n"),
+                                extra.args))
     axis(side = 1, at = hist.fig$mids, labels = hist.fig$breaks[-1])
   } else {
     hist.fig <- do.call(hist, c(list(x = quote(x)), extra.args))

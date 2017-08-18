@@ -16,7 +16,7 @@ extract MSE from a fitted regression model.
 Package: \tab dvmisc\cr
 Type: \tab Package\cr
 Version: \tab 1.1.1\cr
-Date: \tab 2017-08-16\cr
+Date: \tab 2017-08-17\cr
 License: \tab GPL-2\cr
 }
 The following functions are included:
@@ -39,6 +39,10 @@ The following functions are included:
 \code{\link{cmin}}\cr
 \code{\link{cmax}}\cr
 \code{\link{crange}}\cr
+\code{\link{csd}}\cr
+\code{\link{cvar}}\cr
+\code{\link{ccov}}\cr
+\code{\link{ccor}}\cr
 \code{\link{histo}}
 }
 \author{
