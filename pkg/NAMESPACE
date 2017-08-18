@@ -1,9 +1,10 @@
 exportPattern("^[[:alpha:]]+")
 importFrom("graphics", "axis", "lines", "plot", "legend", "hist", "points")
-importFrom("stats", "qnorm", "qt", "sd", "aov", "binom.test", "prop.test",
-           "t.test", "chisq.test", "fisher.test", "quantile", "anova",
-           "median", "weighted.mean", "dbeta", "dbinom", "dcauchy", "dchisq",
-           "dexp", "df", "dgamma", "dgeom", "dhyper", "dlnorm", "dnbinom",
-           "dnorm", "dpois", "dt", "dunif", "dweibull", "nlminb")
+importFrom("stats", "qnorm", "qt", "sd", "var", "cov", "cor", "aov",
+           "binom.test", "prop.test", "t.test", "chisq.test", "fisher.test",
+           "quantile", "anova", "median", "weighted.mean", "dbeta", "dbinom",
+           "dcauchy", "dchisq", "dexp", "df", "dgamma", "dgeom", "dhyper",
+           "dlnorm", "dnbinom", "dnorm", "dpois", "dt", "dunif", "dweibull",
+           "nlminb")
 importFrom("MASS", "fitdistr")
 import(rbenchmark)

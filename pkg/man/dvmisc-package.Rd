@@ -16,7 +16,7 @@ extract MSE from a fitted regression model.
 Package: \tab dvmisc\cr
 Type: \tab Package\cr
 Version: \tab 1.1.1\cr
-Date: \tab 2017-08-17\cr
+Date: \tab 2017-08-18\cr
 License: \tab GPL-2\cr
 }
 The following functions are included:
