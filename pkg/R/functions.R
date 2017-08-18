@@ -515,8 +515,6 @@ ccor <- function(..., use = "complete.obs") {
 
 
 # Histogram with some added features
-# Note: Consider adding transformed-normal options, e.g. square root, etc.
-# Maybe "tnorm.sqrt", "tnorm.inverse", "tnorm.squared", "tnorm.cubed", "tnorm.boxcox"
 histo <- function(x,
                   dis = "none", dis.shift = NULL,
                   integer.breaks = NULL,
