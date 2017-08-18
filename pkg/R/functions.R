@@ -506,15 +506,18 @@ csd <- function(x, na.rm = TRUE) {
 cvar <- function(x, na.rm = TRUE, ...) {
   var(x, na.rm = na.rm, ...)
 }
-ccov <- function(..., use = "complete.obs") {
-  cov(..., use = use)
+ccov <- function(x, use = "complete.obs", ...) {
+  cov(x, use = use, ...)
 }
-ccor <- function(..., use = "complete.obs") {
-  cor(..., use = use)
+ccor <- function(x, use = "complete.obs", ...) {
+  cor(x, use = use, ...)
 }
 
 
 # Histogram with some added features
+# Think about adding some transformation options... Could just leave it to
+# the user, but might be nice to add something like "boxcox.norm",
+# "sqrt.norm", "inverse.norm", etc.
 histo <- function(x,
                   dis = "none", dis.shift = NULL,
                   integer.breaks = NULL,
