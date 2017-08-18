@@ -32,6 +32,7 @@ The following functions are included:
 \code{\link{which.min2}}\cr
 \code{\link{which.max2}}\cr
 \code{\link{get.mse}}\cr
+\code{\link{sum}}\cr
 \code{\link{cmean}}\cr
 \code{\link{cweighted.mean}}\cr
 \code{\link{cmedian}}\cr

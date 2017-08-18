@@ -478,7 +478,10 @@ get.mse <- function(model.fit, var.estimate = FALSE) {
 }
 
 
-# "Complete data" versions of mean, median, etc., with default na.rm = TRUE
+# "Complete data" versions of sum, mean, median, etc., with default na.rm = TRUE
+csum <- function(x, na.rm = TRUE, ...) {
+  sum(x = x, na.rm = na.rm, ...)
+}
 cmean <- function(x, na.rm = TRUE, ...) {
   mean(x = x, na.rm = na.rm, ...)
 }
