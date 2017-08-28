@@ -52,7 +52,7 @@ Optional list of inputs to pass to \code{\link{axis}} function.
 Optional list of inputs to pass to \code{\link{legend}} function.
 }
   \item{...}{
-Further arguments passed to other methods.
+Additional arguments to pass to \code{\link{t.test}} or \code{\link{aov}}.
 }
 }
 \details{

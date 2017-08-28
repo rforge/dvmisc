@@ -105,6 +105,184 @@ bmi4 <- function(x, labels = TRUE) {
 }
 
 
+# Create graph of point +/- error bar
+points.bars <- function(y = NULL,
+                        bars = NULL,
+                        bars.lower = y - bars,
+                        bars.upper = y + bars,
+                        group.labels = NULL,
+                        subgroup.labels = NULL,
+                        subgroup.pch = NULL,
+                        subgroup.col = NULL,
+                        points.list = NULL,
+                        arrows.list = NULL,
+                        axis.list = NULL,
+                        ...) {
+
+  if (! is.matrix(y) | (is.matrix(y) && (ncol(y) == 1 | nrow(y) == 1))) {
+
+    # CODE TO EXECUTE IF THERE ARE NO SUBGROUPS
+
+    # Create x-values for plot
+    xvals <- 1: length(y)
+
+    # If NULL, assign generic values to group.labels
+    if (is.null(group.labels)) {
+      if (is.null(names(y))) {
+        group.labels <- xvals
+      } else {
+        group.labels <- names(y)
+      }
+    }
+
+    # Create list of extra arguments
+    extra.args <- list(...)
+
+    # If NULL, figure out default values for various plot features
+    if (is.null(extra.args$ylab)) {
+      extra.args$ylab = deparse(substitute(y))
+    }
+    if (is.null(extra.args$xlab)) {
+      extra.args$xlab = "Group"
+    }
+    if (is.null(extra.args$main)) {
+      extra.args$main <- paste(extra.args$ylab, " by ", extra.args$xlab, sep = "")
+    }
+    if (is.null(extra.args$ylim)) {
+      yrange <- max(bars.upper) - min(bars.lower)
+      extra.args$ylim <- c(min(bars.lower) - 0.05 * yrange,
+                           max(bars.upper) + 0.05 * yrange)
+      if (all(extra.args$ylim > 0)) {
+        extra.args$ylim[1] <- 0
+      } else if (all(extra.args$ylim < 0)) {
+        extra.args$ylim[2] <- 0
+      }
+    }
+    if (is.null(extra.args$xlim)) {
+      extra.args$xlim <- c(min(xvals) - 0.75, max(xvals) + 0.75)
+    }
+
+    # Create plot
+    do.call(plot, c(list(x = xvals, y = y, xaxt = "n", type = "n"),
+                    extra.args))
+
+    # Add points and error bars
+    do.call(points, c(list(x = xvals, y = y), points.list))
+    arrows.list <- list.override(list1 = list(length = 0.05, angle = 90,
+                                              code = 3),
+                                 list2 = arrows.list)
+    do.call(arrows, c(list(x0 = xvals, y0 = bars.lower,
+                           x1 = xvals, y1 = bars.upper),
+                      arrows.list))
+
+    # Add group labels on x-axis
+    axis.list <- list.override(list1 = list(side = 1, at = xvals,
+                                            labels = group.labels),
+                               list2 = axis.list)
+    do.call(axis, axis.list)
+
+  } else {
+
+    # CODE TO EXECUTE IF THERE ARE SUBGROUPS
+
+    # Get number of groups and number of subgroups within each group
+    group.n <- ncol(y)
+    subgroup.n <- nrow(y)
+
+    # Create x-values for plot
+    xvals <- 1: group.n
+
+    # If NULL, assign generic values to group.labels, subgroup.labels, and
+    # subgroup.pch
+    if (is.null(group.labels)) {
+      if (is.null(colnames(y))) {
+        group.labels <- xvals
+      } else {
+        group.labels <- colnames(y)
+      }
+    }
+    if (is.null(subgroup.labels)) {
+      if (is.null(rownames(y))) {
+        subgroup.labels <- LETTERS[1: subgroup.n]
+      } else {
+        subgroup.labels <- rownames(y)
+      }
+    }
+    if (is.null(subgroup.pch)) {
+      if (subgroup.n <= 5) {
+        subgroup.pch <- c(1, 18, 8, 0, 4)[1: subgroup.n]
+      } else {
+        subgroup.pch <- 1: subgroup.n
+      }
+    }
+    if (is.null(subgroup.col)) {
+      subgroup.col <- rep("black", subgroup.n)
+    }
+
+    # Create list of extra arguments
+    extra.args <- list(...)
+
+    # If NULL, figure out default values for various plot features
+    if (is.null(extra.args$ylab)) {
+      extra.args$ylab = deparse(substitute(y))
+    }
+    if (is.null(extra.args$xlab)) {
+      extra.args$xlab = "Group"
+    }
+    if (is.null(extra.args$main)) {
+      extra.args$main <- paste(extra.args$ylab, " by ", extra.args$xlab, sep = "")
+    }
+    if (is.null(extra.args$ylim)) {
+      yrange <- max(bars.upper) - min(bars.lower)
+      extra.args$ylim <- c(min(bars.lower) - 0.05 * yrange,
+                           max(bars.upper) + 0.05 * yrange)
+      if (all(extra.args$ylim > 0)) {
+        extra.args$ylim[1] <- 0
+      } else if (all(extra.args$ylim < 0)) {
+        extra.args$ylim[2] <- 0
+      }
+    }
+    if (is.null(extra.args$xlim)) {
+      extra.args$xlim <- c(min(xvals) - 0.75, max(xvals) + 0.75)
+    }
+
+    # Create plot
+    do.call(plot, c(list(cbind(xvals, t(y)), xaxt = "n", type = "n"),
+                    extra.args))
+
+    # Create x.steps vector to offset subgroups
+    x.steps <- seq(-0.15, 0.15, 0.3 / (subgroup.n - 1))
+
+    # Loop through and add points and bars
+    arrows.list <- list.override(list1 = list(length = 0.05, angle = 90,
+                                              code = 3),
+                                 list2 = arrows.list)
+    for (ii in 1: subgroup.n) {
+      do.call(points, c(list(x = xvals + x.steps[ii], y = y[ii, ],
+                             pch = subgroup.pch[ii], col = subgroup.col[ii]),
+                        points.list))
+      do.call(arrows, c(list(x0 = xvals + x.steps[ii], y0 = bars.lower[ii, ],
+                             x1 = xvals + x.steps[ii], y1 = bars.upper[ii, ]),
+                        arrows.list))
+    }
+
+    # Add group labels on x-axis
+    axis.list <- list.override(list1 = list(side = 1, at = xvals,
+                                            labels = group.labels),
+                               list2 = axis.list)
+    do.call(axis, axis.list)
+
+    # Add legend
+    legend.list <- list.override(list1 = list(x = "bottomleft",
+                                              pch = subgroup.pch,
+                                              legend = subgroup.labels),
+                                 list2 = legend.list)
+    do.call(legend, legend.list)
+
+  }
+}
+
+
 # Create graph of mean +/- error bar for continuous variable vs. factor
 means.graph <- function(y, group, error.bars = "t.ci", alpha = 0.05,
                         p.legend = TRUE,

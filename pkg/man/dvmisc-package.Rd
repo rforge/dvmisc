@@ -16,7 +16,7 @@ extract MSE from a fitted regression model.
 Package: \tab dvmisc\cr
 Type: \tab Package\cr
 Version: \tab 1.1.1\cr
-Date: \tab 2017-08-18\cr
+Date: \tab 2017-08-28\cr
 License: \tab GPL-2\cr
 }
 The following functions are included:
@@ -28,6 +28,7 @@ The following functions are included:
 \code{\link{bmi3}}\cr
 \code{\link{bmi4}}\cr
 \code{\link{means.graph}}\cr
+\code{\link{points.bars}}\cr
 \code{\link{logodds.graph}}\cr
 \code{\link{which.min2}}\cr
 \code{\link{which.max2}}\cr
