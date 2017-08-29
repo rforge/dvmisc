@@ -1,5 +1,6 @@
 exportPattern("^[[:alpha:]]+")
-importFrom("graphics", "axis", "lines", "plot", "legend", "hist", "points")
+importFrom("graphics", "axis", "lines", "plot", "legend", "hist", "points",
+           "arrows")
 importFrom("stats", "qnorm", "qt", "sd", "var", "cov", "cor", "aov",
            "binom.test", "prop.test", "t.test", "chisq.test", "fisher.test",
            "quantile", "anova", "median", "weighted.mean", "dbeta", "dbinom",

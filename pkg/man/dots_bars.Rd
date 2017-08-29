@@ -1,5 +1,5 @@
-\name{points.bars}
-\alias{points.bars}
+\name{dots.bars}
+\alias{dots.bars}
 \title{
 Plot Points +/- Error Bars
 }
@@ -9,23 +9,24 @@ coefficients) along with user-specified error bars (e.g. standard deviations,
 min/max, 95\% confidence intervals).
 }
 \usage{
-points.bars(y = NULL,
-            bars = NULL,
-            bars.lower = y - bars,
-            bars.upper = y + bars,
-            group.labels = NULL,
-            subgroup.labels = NULL,
-            subgroup.pch = NULL,
-            subgroup.col = NULL,
-            points.list = NULL,
-            arrows.list = NULL,
-            axis.list = NULL,
-            ...)
+dots.bars(y = NULL,
+          bars = NULL,
+          bars.lower = y - bars,
+          bars.upper = y + bars,
+          group.labels = NULL,
+          subgroup.labels = NULL,
+          subgroup.pch = NULL,
+          subgroup.col = NULL,
+          points.list = NULL,
+          arrows.list = NULL,
+          axis.list = NULL,
+          legend.list = NULL,
+          ...)
 }
 \arguments{
   \item{y}{
-Numeric vector of point values for different groups, or numeric matrix where
-each column contains the point values for clustered subgroups within a group.
+Numeric vector of y-values for different groups, or numeric matrix where each
+column contains y-values for clustered subgroups within a group.
 }
   \item{bars}{
 Numeric vector or matrix (matching whichever type \code{y} is) specifying the
@@ -41,16 +42,16 @@ Numeric vector or matrix (matching whichever type \code{y} is) specifying the
 position of the upper end of the error bar for each group/subgroup.
 }
   \item{group.labels}{
-Character vector giving the names of the groups.
+Character vector giving labels for the groups.
 }
-  \item{group.labels}{
-Character vector giving the names of the subgroups.
+  \item{subgroup.labels}{
+Character vector giving labels for the subgroups.
 }
   \item{subgroup.pch}{
-Plotting symbol for different subgroups.
+Plotting symbol for different subgroups within each group.
 }
   \item{subgroup.col}{
-Plotting color for different subgroups.
+Plotting color for different subgroups within each group.
 }
   \item{points.list}{
 Optional list of inputs to pass to \code{\link{points}} function.
@@ -60,6 +61,9 @@ Optional list of inputs to pass to \code{\link{arrows}} function.
 }
   \item{axis.list}{
 Optional list of inputs to pass to \code{\link{axis}} function.
+}
+  \item{legend.list}{
+Optional list of inputs to pass to \code{\link{legend}} function.
 }
   \item{...}{
 Additional arguments to pass to \code{\link{plot}} function.
@@ -94,7 +98,7 @@ NA
 dat <- cbind(rnorm(100, 2), rnorm(100, 2.5), rnorm(100, 1.75))
 means <- apply(dat, 2, mean)
 sds <- apply(dat, 2, sd)
-fig1 <- points.bars(y = means, bars = sds, main = "Mean +/- SD by Group",
+fig1 <- dots.bars(y = means, bars = sds, main = "Mean +/- SD by Group",
                     ylab = "Mean +/- SD")
 
 # Simulate BMI values for males and females in 3 different age groups, and graph
@@ -109,7 +113,8 @@ ci.lower <- tapply(dat$bmi, dat[, c("sex", "age")],
                    function(x) t.test(x)$conf.int[1])
 ci.upper <- tapply(dat$bmi, dat[, c("sex", "age")],
                    function(x) t.test(x)$conf.int[2])
-fig2 <- points.bars(y = means, bars.lower = ci.lower, bars.upper = ci.upper,
+fig2 <- dots.bars(y = means, bars.lower = ci.lower, bars.upper = ci.upper,
                     main = "BMI by Sex and Age",
-                    ylab = "BMI (mean +/- CI)")
+                    ylab = "BMI (mean +/- CI)",
+                    xlab = "Age group")
 }

@@ -106,18 +106,19 @@ bmi4 <- function(x, labels = TRUE) {
 
 
 # Create graph of point +/- error bar
-points.bars <- function(y = NULL,
-                        bars = NULL,
-                        bars.lower = y - bars,
-                        bars.upper = y + bars,
-                        group.labels = NULL,
-                        subgroup.labels = NULL,
-                        subgroup.pch = NULL,
-                        subgroup.col = NULL,
-                        points.list = NULL,
-                        arrows.list = NULL,
-                        axis.list = NULL,
-                        ...) {
+dots.bars <- function(y = NULL,
+                      bars = NULL,
+                      bars.lower = y - bars,
+                      bars.upper = y + bars,
+                      group.labels = NULL,
+                      subgroup.labels = NULL,
+                      subgroup.pch = NULL,
+                      subgroup.col = NULL,
+                      points.list = NULL,
+                      arrows.list = NULL,
+                      axis.list = NULL,
+                      legend.list = NULL,
+                      ...) {
 
   if (! is.matrix(y) | (is.matrix(y) && (ncol(y) == 1 | nrow(y) == 1))) {
 
