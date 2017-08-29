@@ -28,7 +28,7 @@ The following functions are included:
 \code{\link{bmi3}}\cr
 \code{\link{bmi4}}\cr
 \code{\link{means.graph}}\cr
-\code{\link{points.bars}}\cr
+\code{\link{dots.bars}}\cr
 \code{\link{logodds.graph}}\cr
 \code{\link{which.min2}}\cr
 \code{\link{which.max2}}\cr

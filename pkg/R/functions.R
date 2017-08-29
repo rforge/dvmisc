@@ -704,6 +704,7 @@ histo <- function(x,
                   dis = "none", dis.shift = NULL,
                   integer.breaks = NULL,
                   points.list = NULL,
+                  axis.list = NULL,
                   ...) {
 
   # Create list with ... arguments
@@ -760,9 +761,10 @@ histo <- function(x,
 
   # Create histogram
   if (integer.breaks) {
-    hist.fig <- do.call(hist, c(list(x = quote(x), xaxt = "n"),
-                                extra.args))
-    axis(side = 1, at = hist.fig$mids, labels = hist.fig$breaks[-1])
+    hist.fig <- do.call(hist, c(list(x = quote(x), xaxt = "n"), extra.args))
+    hist.fig <- do.call(axis, c(list(side = 1, at = hist.fig$mids,
+                                     labels = hist.fig$breaks[-1]),
+                                axis.list))
   } else {
     hist.fig <- do.call(hist, c(list(x = quote(x)), extra.args))
   }

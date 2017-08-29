@@ -16,6 +16,7 @@ histo(x,
       dis = "none", dis.shift = NULL,
       integer.breaks = NULL,
       points.list = NULL,
+      axis.list = NULL,
       ...)
 }
 \arguments{
@@ -43,6 +44,9 @@ don't take on too many unique values.
   \item{points.list}{
 Optional list of inputs to pass to \code{\link{points}} function, which is used
 to add the fitted PDF/PMF.
+}
+  \item{axis.list}{
+Optional list of inputs to pass to \code{\link{axis}} function.
 }
   \item{...}{
 May include arguments to pass to \code{\link{hist}} and/or parameter values
