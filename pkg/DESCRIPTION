@@ -9,4 +9,4 @@ Description: A collection of general-purpose R functions, most of which are simp
 LazyData: true
 License: GPL-2
 Depends: R (>= 3.0.0), rbenchmark
-Imports: graphics, stats, MASS, gee
+Imports: graphics, stats, MASS, gee (>= 0.5.0)
