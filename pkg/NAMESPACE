@@ -9,4 +9,3 @@ importFrom("stats", "qnorm", "qt", "sd", "var", "cov", "cor", "aov",
            "nlminb")
 importFrom("MASS", "fitdistr")
 import(rbenchmark)
-import("gee")
