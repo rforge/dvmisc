@@ -907,3 +907,6 @@ histo <- function(x,
   }
 
 }
+
+
+# Compare speed of moving average functions
