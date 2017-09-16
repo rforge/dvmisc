@@ -910,5 +910,5 @@ histo <- function(x,
 
 
 movingave <- function(x, window) {
-  .Call('dvmisc_movingave', PACKAGE = 'dvmisc', x, window)
+  .Call('dvmisc_movingavec', PACKAGE = 'dvmisc', x, window)
 }

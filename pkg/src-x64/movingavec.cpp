@@ -2,7 +2,7 @@
 using namespace Rcpp;
 
 // [[Rcpp::export]]
-NumericVector movingave(NumericVector x, int window) {
+NumericVector movingavec(NumericVector x, int window) {
   int n = x.size();
   NumericVector out(n - window + 1);
   double sum = 0;

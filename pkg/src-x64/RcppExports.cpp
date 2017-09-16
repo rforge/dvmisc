@@ -5,16 +5,16 @@
 
 using namespace Rcpp;
 
-// movingave
-NumericVector movingaves(NumericVector x, int window);
-RcppExport SEXP dvmisc_movingave(SEXP xSEXP, SEXP windowSEXP) {
+// movingavec
+NumericVector movingavec(NumericVector x, int window);
+RcppExport SEXP dvmisc_movingavec(SEXP xSEXP, SEXP windowSEXP) {
 BEGIN_RCPP
     SEXP __sexp_result;
     {
         Rcpp::RNGScope __rngScope;
         NumericVector x = Rcpp::as<NumericVector >(xSEXP);
         int window = Rcpp::as<int >(windowSEXP);
-        NumericVector __result = movingave(x, window);
+        NumericVector __result = movingavec(x, window);
         PROTECT(__sexp_result = Rcpp::wrap(__result));
     }
     UNPROTECT(1);
