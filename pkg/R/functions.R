@@ -909,4 +909,6 @@ histo <- function(x,
 }
 
 
-# Compare speed of moving average functions
+movingave <- function(x, window) {
+  .Call('dvmisc_movingave', PACKAGE = 'dvmisc', x, window)
+}

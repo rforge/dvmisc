@@ -7,6 +7,6 @@ importFrom("stats", "qnorm", "qt", "sd", "var", "cov", "cor", "aov",
            "dcauchy", "dchisq", "dexp", "df", "dgamma", "dgeom", "dhyper",
            "dlnorm", "dnbinom", "dnorm", "dpois", "dt", "dunif", "dweibull",
            "nlminb")
+importFrom("Rcpp", "evalCpp")
 importFrom("MASS", "fitdistr")
 import(rbenchmark)
-import(gee)

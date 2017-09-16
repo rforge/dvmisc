@@ -16,36 +16,36 @@ extract MSE from a fitted regression model.
 Package: \tab dvmisc\cr
 Type: \tab Package\cr
 Version: \tab 1.1.1\cr
-Date: \tab 2017-09-14\cr
+Date: \tab 2017-09-15\cr
 License: \tab GPL-2\cr
 }
 The following functions are included:
 
-%\code{\link{list.override}}\cr
-%\code{\link{inside}}\cr
-%\code{\link{interval.groups}}\cr
-%\code{\link{quant.groups}}\cr
-%\code{\link{bmi3}}\cr
-%\code{\link{bmi4}}\cr
-%\code{\link{means.graph}}\cr
-%\code{\link{dots.bars}}\cr
-%\code{\link{logodds.graph}}\cr
-%\code{\link{which.min2}}\cr
-%\code{\link{which.max2}}\cr
-%\code{\link{get.mse}}\cr
-%\code{\link{sum}}\cr
-%\code{\link{cmean}}\cr
-%\code{\link{cweighted.mean}}\cr
-%\code{\link{cmedian}}\cr
-%\code{\link{cquantile}}\cr
-%\code{\link{cmin}}\cr
-%\code{\link{cmax}}\cr
-%\code{\link{crange}}\cr
-%\code{\link{csd}}\cr
-%\code{\link{cvar}}\cr
-%\code{\link{ccov}}\cr
-%\code{\link{ccor}}\cr
-%\code{\link{histo}}
+\code{\link{list.override}}\cr
+\code{\link{inside}}\cr
+\code{\link{interval.groups}}\cr
+\code{\link{quant.groups}}\cr
+\code{\link{bmi3}}\cr
+\code{\link{bmi4}}\cr
+\code{\link{means.graph}}\cr
+\code{\link{dots.bars}}\cr
+\code{\link{logodds.graph}}\cr
+\code{\link{which.min2}}\cr
+\code{\link{which.max2}}\cr
+\code{\link{get.mse}}\cr
+\code{\link{sum}}\cr
+\code{\link{cmean}}\cr
+\code{\link{cweighted.mean}}\cr
+\code{\link{cmedian}}\cr
+\code{\link{cquantile}}\cr
+\code{\link{cmin}}\cr
+\code{\link{cmax}}\cr
+\code{\link{crange}}\cr
+\code{\link{csd}}\cr
+\code{\link{cvar}}\cr
+\code{\link{ccov}}\cr
+\code{\link{ccor}}\cr
+\code{\link{histo}}
 }
 \author{
 Dane R. Van Domelen
