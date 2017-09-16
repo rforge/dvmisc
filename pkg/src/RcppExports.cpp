@@ -6,7 +6,7 @@
 using namespace Rcpp;
 
 // movingave
-NumericVector movingaves(NumericVector x, int window);
+NumericVector movingave(NumericVector x, int window);
 RcppExport SEXP dvmisc_movingave(SEXP xSEXP, SEXP windowSEXP) {
 BEGIN_RCPP
     SEXP __sexp_result;
