@@ -1,4 +1,4 @@
-useDynLib(dvmisc)
+useDynLib(dvmisc, .registration = TRUE)
 exportPattern("^[[:alpha:]]+")
 importFrom("graphics", "axis", "lines", "plot", "legend", "hist", "points",
            "arrows")
