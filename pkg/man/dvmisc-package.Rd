@@ -47,7 +47,7 @@ The following functions are included:
 \code{\link{ccor}}\cr
 \code{\link{histo}}\cr
 \code{\link{movingave}}\cr
-\code{\link{sum.integers}}\cr
+\code{\link{sum_integers}}\cr
 \code{\link{mean2}}\cr
 \code{\link{var2}}\cr
 \code{\link{cov2}}\cr
