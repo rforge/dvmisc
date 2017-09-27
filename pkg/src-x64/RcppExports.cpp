@@ -175,7 +175,7 @@ RcppExport SEXP dvmisc_maxc_n(SEXP xSEXP) {
 }
 // weighted_meanc_ii
 double weighted_meanc_ii(IntegerVector x, IntegerVector w);
-RcppExport SEXP dvmisc_maxc_i(SEXP xSEXP, SEXP wSEXP) {
+RcppExport SEXP dvmisc_weighted_meanc_ii(SEXP xSEXP, SEXP wSEXP) {
   BEGIN_RCPP
   SEXP __sexp_result;
   {
@@ -191,7 +191,7 @@ RcppExport SEXP dvmisc_maxc_i(SEXP xSEXP, SEXP wSEXP) {
 }
 // weighted_meanc_in
 double weighted_meanc_in(IntegerVector x, NumericVector w);
-RcppExport SEXP dvmisc_maxc_i(SEXP xSEXP, SEXP wSEXP) {
+RcppExport SEXP dvmisc_weighted_meanc_in(SEXP xSEXP, SEXP wSEXP) {
   BEGIN_RCPP
   SEXP __sexp_result;
   {
@@ -207,7 +207,7 @@ RcppExport SEXP dvmisc_maxc_i(SEXP xSEXP, SEXP wSEXP) {
 }
 // weighted_meanc_ni
 double weighted_meanc_ni(NumericVector x, IntegerVector w);
-RcppExport SEXP dvmisc_maxc_i(SEXP xSEXP, SEXP wSEXP) {
+RcppExport SEXP dvmisc_weighted_meanc_ni(SEXP xSEXP, SEXP wSEXP) {
   BEGIN_RCPP
   SEXP __sexp_result;
   {
@@ -223,7 +223,7 @@ RcppExport SEXP dvmisc_maxc_i(SEXP xSEXP, SEXP wSEXP) {
 }
 // weighted_meanc_nn
 double weighted_meanc_nn(NumericVector x, NumericVector w);
-RcppExport SEXP dvmisc_maxc_i(SEXP xSEXP, SEXP wSEXP) {
+RcppExport SEXP dvmisc_weighted_meanc_nn(SEXP xSEXP, SEXP wSEXP) {
   BEGIN_RCPP
   SEXP __sexp_result;
   {
