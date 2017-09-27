@@ -8,6 +8,6 @@ Maintainer: Dane R. Van Domelen <vandomed@gmail.com>
 Description: A collection of general-purpose R functions, most of which are simple functions that do something convenient, e.g. easily create histogram with fitted PDF/PMF curve, create equal-interval groups, assess linearity in logistic regression, or extract MSE from a fitted regression model.
 LazyData: true
 License: GPL-2
-Depends: R (>= 3.0.0), rbenchmark
-Imports: Rcpp (>= 0.11.0), graphics, stats, MASS, microbenchmark
+Depends: R (>= 3.0.0), rbenchmark, microbenchmark
+Imports: Rcpp (>= 0.11.0), graphics, stats, MASS
 LinkingTo: Rcpp

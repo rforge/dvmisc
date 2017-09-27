@@ -916,7 +916,7 @@ movingave <- function(x, window) {
 
 
 # Faster sum for long integer vectors
-sum.integers <- function(x) {
+sum_integers <- function(x) {
   .Call('dvmisc_sumc_i', PACKAGE = 'dvmisc', x)
 }
 
@@ -962,10 +962,14 @@ sd2 <- function(x, x.integer = FALSE) {
 
 
 # Pooled sample variance
-pooled.var <- function(x, y) {
+pooled.var <- function(x, y, xy.integer = FALSE) {
   n1 <- length(x)
   n2 <- length(y)
-  ((n1 - 1) * var2(x) + (n2 - 1) * var2(y)) / (n1 + n2 - 2)
+  if (xy.integer) {
+    ((n1 - 1) * var2(x, TRUE) + (n2 - 1) * var2(y, TRUE)) / (n1 + n2 - 2)
+  } else {
+    ((n1 - 1) * var2(x) + (n2 - 1) * var2(y)) / (n1 + n2 - 2)
+  }
 }
 
 
