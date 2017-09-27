@@ -16,7 +16,7 @@ extract MSE from a fitted regression model.
 Package: \tab dvmisc\cr
 Type: \tab Package\cr
 Version: \tab 1.1.1\cr
-Date: \tab 2017-09-17\cr
+Date: \tab 2017-09-27\cr
 License: \tab GPL-2\cr
 }
 The following functions are included:
@@ -46,7 +46,16 @@ The following functions are included:
 \code{\link{ccov}}\cr
 \code{\link{ccor}}\cr
 \code{\link{histo}}\cr
-\code{\link{movingave}}
+\code{\link{movingave}}\cr
+\code{\link{sum.integers}}\cr
+\code{\link{mean2}}\cr
+\code{\link{var2}}\cr
+\code{\link{cov2}}\cr
+\code{\link{sd2}}\cr
+\code{\link{pooled.var}}\cr
+\code{\link{min2}}\cr
+\code{\link{max2}}\cr
+\code{\link{weighted.mean2}}
 }
 \author{
 Dane R. Van Domelen

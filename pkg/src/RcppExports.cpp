@@ -21,3 +21,219 @@ BEGIN_RCPP
     return __sexp_result;
 END_RCPP
 }
+// sumc_i
+int sumc_i(IntegerVector x);
+RcppExport SEXP dvmisc_sumc_i(SEXP xSEXP) {
+  BEGIN_RCPP
+  SEXP __sexp_result;
+  {
+    Rcpp::RNGScope __rngScope;
+    IntegerVector x = Rcpp::as<IntegerVector >(xSEXP);
+    int __result = sumc_i(x);
+    PROTECT(__sexp_result = Rcpp::wrap(__result));
+  }
+  UNPROTECT(1);
+  return __sexp_result;
+  END_RCPP
+}
+// meanc_i
+int meanc_i(IntegerVector x);
+RcppExport SEXP dvmisc_meanc_i(SEXP xSEXP) {
+  BEGIN_RCPP
+  SEXP __sexp_result;
+  {
+    Rcpp::RNGScope __rngScope;
+    IntegerVector x = Rcpp::as<IntegerVector >(xSEXP);
+    int __result = meanc_i(x);
+    PROTECT(__sexp_result = Rcpp::wrap(__result));
+  }
+  UNPROTECT(1);
+  return __sexp_result;
+  END_RCPP
+}
+// varc_i
+int varc_i(IntegerVector x);
+RcppExport SEXP dvmisc_varc_i(SEXP xSEXP) {
+  BEGIN_RCPP
+  SEXP __sexp_result;
+  {
+    Rcpp::RNGScope __rngScope;
+    IntegerVector x = Rcpp::as<IntegerVector >(xSEXP);
+    int __result = varc_i(x);
+    PROTECT(__sexp_result = Rcpp::wrap(__result));
+  }
+  UNPROTECT(1);
+  return __sexp_result;
+  END_RCPP
+}
+// varc_n
+int varc_n(NumericVector x);
+RcppExport SEXP dvmisc_varc_n(SEXP xSEXP) {
+  BEGIN_RCPP
+  SEXP __sexp_result;
+  {
+    Rcpp::RNGScope __rngScope;
+    NumericVector x = Rcpp::as<NumericVector >(xSEXP);
+    int __result = varc_n(x);
+    PROTECT(__sexp_result = Rcpp::wrap(__result));
+  }
+  UNPROTECT(1);
+  return __sexp_result;
+  END_RCPP
+}
+// covc_i
+int covc_i(IntegerVector x, IntegerVector y);
+RcppExport SEXP dvmisc_covc_i(SEXP xSEXP SEXP ySEXP) {
+  BEGIN_RCPP
+  SEXP __sexp_result;
+  {
+    Rcpp::RNGScope __rngScope;
+    IntegerVector x = Rcpp::as<IntegerVector >(xSEXP);
+    IntegerVector y = Rcpp::as<IntegerVector >(ySEXP);
+    int __result = covc_i(x, y);
+    PROTECT(__sexp_result = Rcpp::wrap(__result));
+  }
+  UNPROTECT(1);
+  return __sexp_result;
+  END_RCPP
+}
+// covc_n
+int covc_n(NumericVector x, NumericVector y);
+RcppExport SEXP dvmisc_covc_n(SEXP xSEXP SEXP ySEXP) {
+  BEGIN_RCPP
+  SEXP __sexp_result;
+  {
+    Rcpp::RNGScope __rngScope;
+    NumericVector x = Rcpp::as<NumericVector >(xSEXP);
+    NumericVector y = Rcpp::as<NumericVector >(ySEXP);
+    int __result = covc_n(x, y);
+    PROTECT(__sexp_result = Rcpp::wrap(__result));
+  }
+  UNPROTECT(1);
+  return __sexp_result;
+  END_RCPP
+}
+// minc_i
+int minc_i(IntegerVector x);
+RcppExport SEXP dvmisc_minc_i(SEXP xSEXP) {
+  BEGIN_RCPP
+  SEXP __sexp_result;
+  {
+    Rcpp::RNGScope __rngScope;
+    IntegerVector x = Rcpp::as<IntegerVector >(xSEXP);
+    int __result = minc_i(x);
+    PROTECT(__sexp_result = Rcpp::wrap(__result));
+  }
+  UNPROTECT(1);
+  return __sexp_result;
+  END_RCPP
+}
+// minc_n
+double minc_n(NumericVector x);
+RcppExport SEXP dvmisc_minc_n(SEXP xSEXP) {
+  BEGIN_RCPP
+  SEXP __sexp_result;
+  {
+    Rcpp::RNGScope __rngScope;
+    NumericVector x = Rcpp::as<NumericVector >(xSEXP);
+    int __result = minc_n(x);
+    PROTECT(__sexp_result = Rcpp::wrap(__result));
+  }
+  UNPROTECT(1);
+  return __sexp_result;
+  END_RCPP
+}
+// maxc_i
+int maxc_i(IntegerVector x);
+RcppExport SEXP dvmisc_maxc_i(SEXP xSEXP) {
+  BEGIN_RCPP
+  SEXP __sexp_result;
+  {
+    Rcpp::RNGScope __rngScope;
+    IntegerVector x = Rcpp::as<IntegerVector >(xSEXP);
+    int __result = maxc_i(x);
+    PROTECT(__sexp_result = Rcpp::wrap(__result));
+  }
+  UNPROTECT(1);
+  return __sexp_result;
+  END_RCPP
+}
+// maxc_n
+double maxc_n(NumericVector x);
+RcppExport SEXP dvmisc_maxc_n(SEXP xSEXP) {
+  BEGIN_RCPP
+  SEXP __sexp_result;
+  {
+    Rcpp::RNGScope __rngScope;
+    NumericVector x = Rcpp::as<NumericVector >(xSEXP);
+    int __result = maxc_n(x);
+    PROTECT(__sexp_result = Rcpp::wrap(__result));
+  }
+  UNPROTECT(1);
+  return __sexp_result;
+  END_RCPP
+}
+// weighted_meanc_ii
+double weighted_meanc_ii(IntegerVector x, IntegerVector w);
+RcppExport SEXP dvmisc_maxc_i(SEXP xSEXP, SEXP wSEXP) {
+  BEGIN_RCPP
+  SEXP __sexp_result;
+  {
+    Rcpp::RNGScope __rngScope;
+    IntegerVector x = Rcpp::as<IntegerVector >(xSEXP);
+    IntegerVector w = Rcpp::as<IntegerVector >(wSEXP);
+    int __result = weighted_meanc_ii(x, w);
+    PROTECT(__sexp_result = Rcpp::wrap(__result));
+  }
+  UNPROTECT(1);
+  return __sexp_result;
+  END_RCPP
+}
+// weighted_meanc_in
+double weighted_meanc_in(IntegerVector x, NumericVector w);
+RcppExport SEXP dvmisc_maxc_i(SEXP xSEXP, SEXP wSEXP) {
+  BEGIN_RCPP
+  SEXP __sexp_result;
+  {
+    Rcpp::RNGScope __rngScope;
+    IntegerVector x = Rcpp::as<IntegerVector >(xSEXP);
+    NumericVector w = Rcpp::as<NumericVector >(wSEXP);
+    int __result = weighted_meanc_in(x, w);
+    PROTECT(__sexp_result = Rcpp::wrap(__result));
+  }
+  UNPROTECT(1);
+  return __sexp_result;
+  END_RCPP
+}
+// weighted_meanc_ni
+double weighted_meanc_ni(NumericVector x, IntegerVector w);
+RcppExport SEXP dvmisc_maxc_i(SEXP xSEXP, SEXP wSEXP) {
+  BEGIN_RCPP
+  SEXP __sexp_result;
+  {
+    Rcpp::RNGScope __rngScope;
+    NumericVector x = Rcpp::as<NumericVector >(xSEXP);
+    IntegerVector w = Rcpp::as<IntegerVector >(wSEXP);
+    int __result = weighted_meanc_ni(x, w);
+    PROTECT(__sexp_result = Rcpp::wrap(__result));
+  }
+  UNPROTECT(1);
+  return __sexp_result;
+  END_RCPP
+}
+// weighted_meanc_nn
+double weighted_meanc_nn(NumericVector x, NumericVector w);
+RcppExport SEXP dvmisc_maxc_i(SEXP xSEXP, SEXP wSEXP) {
+  BEGIN_RCPP
+  SEXP __sexp_result;
+  {
+    Rcpp::RNGScope __rngScope;
+    NumericVector x = Rcpp::as<NumericVector >(xSEXP);
+    NumericVector w = Rcpp::as<NumericVector >(wSEXP);
+    int __result = weighted_meanc_nn(x, w);
+    PROTECT(__sexp_result = Rcpp::wrap(__result));
+  }
+  UNPROTECT(1);
+  return __sexp_result;
+  END_RCPP
+}

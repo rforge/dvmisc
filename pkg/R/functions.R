@@ -909,6 +909,99 @@ histo <- function(x,
 }
 
 
+# C++ functions
 movingave <- function(x, window) {
   .Call('dvmisc_movingavec', PACKAGE = 'dvmisc', x, window)
+}
+
+
+# Faster sum for long integer vectors
+sum.integers <- function(x) {
+  .Call('dvmisc_sumc_i', PACKAGE = 'dvmisc', x)
+}
+
+
+# Faster mean (surprising!)
+mean2 <- function(x, x.integer = FALSE) {
+  if (x.integer) {
+    .Call('dvmisc_meanc_i', PACKAGE = 'dvmisc', x)
+  } else {
+    sum(x) / length(x)
+  }
+}
+
+
+# Sample variance
+var2 <- function(x, x.integer = FALSE) {
+  if (x.integer) {
+    .Call('dvmisc_varc_i', PACKAGE = 'dvmisc', x)
+  } else {
+    .Call('dvmisc_varc_n', PACKAGE = 'dvmisc', x)
+  }
+}
+
+
+# Sample covariance
+cov2 <- function(x, y, xy.integer = FALSE) {
+  if (xy.integer) {
+    .Call('dvmisc_covc_i', PACKAGE = 'dvmisc', x, y)
+  } else {
+    .Call('dvmisc_covc_n', PACKAGE = 'dvmisc', x, y)
+  }
+}
+
+
+# Sample standard deviation
+sd2 <- function(x, x.integer = FALSE) {
+  if (x.integer) {
+    sqrt(.Call('dvmisc_varc_i', PACKAGE = 'dvmisc', x))
+  } else {
+    sqrt(.Call('dvmisc_varc_n', PACKAGE = 'dvmisc', x))
+  }
+}
+
+
+# Pooled sample variance
+pooled.var <- function(x, y) {
+  n1 <- length(x)
+  n2 <- length(y)
+  ((n1 - 1) * var2(x) + (n2 - 1) * var2(y)) / (n1 + n2 - 2)
+}
+
+
+# Minimum
+min2 <- function(x, x.integer = FALSE) {
+  if (x.integer) {
+    .Call('dvmisc_minc_i', PACKAGE = 'dvmisc', x)
+  } else {
+    .Call('dvmisc_minc_n', PACKAGE = 'dvmisc', x)
+  }
+}
+
+
+# Maximum
+max2 <- function(x, x.integer = FALSE) {
+  if (x.integer) {
+    .Call('dvmisc_maxc_i', PACKAGE = 'dvmisc', x)
+  } else {
+    .Call('dvmisc_maxc_n', PACKAGE = 'dvmisc', x)
+  }
+}
+
+
+# Weighted mean
+weighted.mean2 <- function(x, w, x.integer = FALSE, w.integer = FALSE) {
+  if (x.integer) {
+    if (w.integer) {
+      .Call('dvmisc_weighted_meanc_ii', PACKAGE = 'dvmisc', x)
+    } else {
+      .Call('dvmisc_weighted_meanc_in', PACKAGE = 'dvmisc', x)
+    }
+  } else {
+    if (w.integer) {
+      .Call('dvmisc_weighted_meanc_ni', PACKAGE = 'dvmisc', x)
+    } else {
+      .Call('dvmisc_weighted_meanc_nn', PACKAGE = 'dvmisc', x)
+    }
+  }
 }
