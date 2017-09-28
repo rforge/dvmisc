@@ -13,7 +13,7 @@ pooled.var(x, y, xy.integer = FALSE)
   \item{x}{
 Numeric vector.
 }
-  \item{x.integer}{
+  \item{xy.integer}{
 Logical value indicating whether \code{x} and \code{y} take on integer values.
 }
 }

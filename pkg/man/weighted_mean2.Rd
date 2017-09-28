@@ -49,18 +49,18 @@ NA
 }
 \examples{
 # weighted.mean2 is typically much faster than weighted.mean
-#x <- rnorm(1000)
-#weights <- runif(1000)
-#abs(weighted.mean(x, weights) - weighted.mean2(x, weights))
-#microbenchmark(weighted.mean(x, weights),
-#               weighted.mean2(x, weights),
-#               times = 1000)
+x <- rnorm(1000)
+weights <- runif(1000)
+abs(weighted.mean(x, weights) - weighted.mean2(x, weights))
+microbenchmark(weighted.mean(x, weights),
+               weighted.mean2(x, weights),
+               times = 1000)
 
 # If x is an integer vector, setting x.integer = TRUE will make it even faster
-#x <- rpois(1000, lambda = 5)
-#weights <- runif(1000)
-#microbenchmark(weighted.mean(x, weights),
-#               weighted.mean2(x, weights),
-#               weighted.mean2(x, weights, x.integer = TRUE),
-#               times = 1000)
+x <- rpois(1000, lambda = 5)
+weights <- runif(1000)
+microbenchmark(weighted.mean(x, weights),
+               weighted.mean2(x, weights),
+               weighted.mean2(x, weights, x.integer = TRUE),
+               times = 1000)
 }
