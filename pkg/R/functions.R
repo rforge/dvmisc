@@ -122,7 +122,7 @@ dots.bars <- function(y = NULL,
 
   if (! is.matrix(y) | (is.matrix(y) && (ncol(y) == 1 | nrow(y) == 1))) {
 
-    # CODE TO EXECUTE IF THERE ARE NO SUBGROUPS
+    # Code to execute if there are no subgroups
 
     # Create x-values for plot
     xvals <- 1: length(y)
@@ -184,7 +184,7 @@ dots.bars <- function(y = NULL,
 
   } else {
 
-    # CODE TO EXECUTE IF THERE ARE SUBGROUPS
+    # Code to execute if there are subgroups
 
     # Get number of groups and number of subgroups within each group
     group.n <- ncol(y)
