@@ -40,12 +40,12 @@ x <- rpois(100000, lambda = 5)
 sum(x) == sum_integers(x)
 microbenchmark(sum(x),
                sum_integers(x),
-               times = 1000)
+               times = 100)
 
 # For short integer vectors, sum_integers is slower than sum
 x <- rpois(1000, lambda = 5)
 sum(x) == sum_integers(x)
 microbenchmark(sum(x),
                sum_integers(x),
-               times = 1000)
+               times = 100)
 }

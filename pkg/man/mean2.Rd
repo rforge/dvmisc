@@ -45,7 +45,7 @@ x <- rnorm(10000)
 mean(x) == mean2(x)
 microbenchmark(mean(x),
                mean2(x),
-               times = 10000)
+               times = 100)
 
 # For very long integer vectors, mean2 may be slower than mean. But if you set
 # x.integer = TRUE, mean2 should become faster.
@@ -55,5 +55,5 @@ mean2(x) == mean2(x, TRUE)
 microbenchmark(mean(x),
                mean2(x),
                mean2(x, TRUE),
-               times = 1000)
+               times = 100)
 }

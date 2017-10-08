@@ -42,12 +42,12 @@ x <- rnorm(1000)
 abs(sd(x) - sd2(x))
 microbenchmark(sd(x),
                sd2(x),
-               times = 10000)
+               times = 100)
 
 # If x is an integer vector, setting x.integer = TRUE will make it even faster
 x <- rpois(1000, lambda = 5)
 microbenchmark(sd(x),
                sd2(x),
                sd2(x, TRUE),
-               times = 10000)
+               times = 100)
 }

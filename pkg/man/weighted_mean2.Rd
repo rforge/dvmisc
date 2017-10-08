@@ -54,7 +54,7 @@ NA
 #abs(weighted.mean(x, weights) - weighted.mean2(x, weights))
 #microbenchmark(weighted.mean(x, weights),
 #               weighted.mean2(x, weights),
-#               times = 1000)
+#               times = 100)
 
 # If x is an integer vector, setting x.integer = TRUE will make it even faster
 #x <- rpois(1000, lambda = 5)
@@ -62,5 +62,5 @@ NA
 #microbenchmark(weighted.mean(x, weights),
 #               weighted.mean2(x, weights),
 #               weighted.mean2(x, weights, x.integer = TRUE),
-#               times = 1000)
+#               times = 100)
 }

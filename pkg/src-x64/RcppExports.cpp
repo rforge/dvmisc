@@ -44,7 +44,7 @@ RcppExport SEXP dvmisc_meanc_i(SEXP xSEXP) {
   {
     Rcpp::RNGScope __rngScope;
     IntegerVector x = Rcpp::as<IntegerVector >(xSEXP);
-    int __result = meanc_i(x);
+    double __result = meanc_i(x);
     PROTECT(__sexp_result = Rcpp::wrap(__result));
   }
   UNPROTECT(1);
@@ -59,7 +59,7 @@ RcppExport SEXP dvmisc_varc_i(SEXP xSEXP) {
   {
     Rcpp::RNGScope __rngScope;
     IntegerVector x = Rcpp::as<IntegerVector >(xSEXP);
-    int __result = varc_i(x);
+    double __result = varc_i(x);
     PROTECT(__sexp_result = Rcpp::wrap(__result));
   }
   UNPROTECT(1);
@@ -74,7 +74,7 @@ RcppExport SEXP dvmisc_varc_n(SEXP xSEXP) {
   {
     Rcpp::RNGScope __rngScope;
     NumericVector x = Rcpp::as<NumericVector >(xSEXP);
-    int __result = varc_n(x);
+    double __result = varc_n(x);
     PROTECT(__sexp_result = Rcpp::wrap(__result));
   }
   UNPROTECT(1);
@@ -90,7 +90,7 @@ RcppExport SEXP dvmisc_covc_i(SEXP xSEXP, SEXP ySEXP) {
     Rcpp::RNGScope __rngScope;
     IntegerVector x = Rcpp::as<IntegerVector >(xSEXP);
     IntegerVector y = Rcpp::as<IntegerVector >(ySEXP);
-    int __result = covc_i(x, y);
+    double __result = covc_i(x, y);
     PROTECT(__sexp_result = Rcpp::wrap(__result));
   }
   UNPROTECT(1);
@@ -106,7 +106,7 @@ RcppExport SEXP dvmisc_covc_n(SEXP xSEXP, SEXP ySEXP) {
     Rcpp::RNGScope __rngScope;
     NumericVector x = Rcpp::as<NumericVector >(xSEXP);
     NumericVector y = Rcpp::as<NumericVector >(ySEXP);
-    int __result = covc_n(x, y);
+    double __result = covc_n(x, y);
     PROTECT(__sexp_result = Rcpp::wrap(__result));
   }
   UNPROTECT(1);
@@ -136,7 +136,7 @@ RcppExport SEXP dvmisc_minc_n(SEXP xSEXP) {
   {
     Rcpp::RNGScope __rngScope;
     NumericVector x = Rcpp::as<NumericVector >(xSEXP);
-    int __result = minc_n(x);
+    double __result = minc_n(x);
     PROTECT(__sexp_result = Rcpp::wrap(__result));
   }
   UNPROTECT(1);
@@ -166,7 +166,7 @@ RcppExport SEXP dvmisc_maxc_n(SEXP xSEXP) {
   {
     Rcpp::RNGScope __rngScope;
     NumericVector x = Rcpp::as<NumericVector >(xSEXP);
-    int __result = maxc_n(x);
+    double __result = maxc_n(x);
     PROTECT(__sexp_result = Rcpp::wrap(__result));
   }
   UNPROTECT(1);
@@ -182,7 +182,7 @@ RcppExport SEXP dvmisc_weighted_meanc_ii(SEXP xSEXP, SEXP wSEXP) {
     Rcpp::RNGScope __rngScope;
     IntegerVector x = Rcpp::as<IntegerVector >(xSEXP);
     IntegerVector w = Rcpp::as<IntegerVector >(wSEXP);
-    int __result = weighted_meanc_ii(x, w);
+    double __result = weighted_meanc_ii(x, w);
     PROTECT(__sexp_result = Rcpp::wrap(__result));
   }
   UNPROTECT(1);
@@ -198,7 +198,7 @@ RcppExport SEXP dvmisc_weighted_meanc_in(SEXP xSEXP, SEXP wSEXP) {
     Rcpp::RNGScope __rngScope;
     IntegerVector x = Rcpp::as<IntegerVector >(xSEXP);
     NumericVector w = Rcpp::as<NumericVector >(wSEXP);
-    int __result = weighted_meanc_in(x, w);
+    double __result = weighted_meanc_in(x, w);
     PROTECT(__sexp_result = Rcpp::wrap(__result));
   }
   UNPROTECT(1);
@@ -214,7 +214,7 @@ RcppExport SEXP dvmisc_weighted_meanc_ni(SEXP xSEXP, SEXP wSEXP) {
     Rcpp::RNGScope __rngScope;
     NumericVector x = Rcpp::as<NumericVector >(xSEXP);
     IntegerVector w = Rcpp::as<IntegerVector >(wSEXP);
-    int __result = weighted_meanc_ni(x, w);
+    double __result = weighted_meanc_ni(x, w);
     PROTECT(__sexp_result = Rcpp::wrap(__result));
   }
   UNPROTECT(1);
@@ -230,7 +230,7 @@ RcppExport SEXP dvmisc_weighted_meanc_nn(SEXP xSEXP, SEXP wSEXP) {
     Rcpp::RNGScope __rngScope;
     NumericVector x = Rcpp::as<NumericVector >(xSEXP);
     NumericVector w = Rcpp::as<NumericVector >(wSEXP);
-    int __result = weighted_meanc_nn(x, w);
+    double __result = weighted_meanc_nn(x, w);
     PROTECT(__sexp_result = Rcpp::wrap(__result));
   }
   UNPROTECT(1);

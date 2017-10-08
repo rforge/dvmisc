@@ -43,24 +43,24 @@ x <- rnorm(100000)
 max(x) == max2(x)
 microbenchmark(max(x),
                max2(x),
-               times = 1000)
+               times = 100)
 
 x <- rpois(100000, lambda = 5)
 max(x) == max2(x, TRUE)
 microbenchmark(max(x),
                max2(x, TRUE),
-               times = 1000)
+               times = 100)
 
 # For short vectors, max2 is slower than max
 x <- rnorm(100)
 max(x) == max2(x)
 microbenchmark(max(x),
                max2(x),
-               times = 1000)
+               times = 100)
 
 x <- rpois(100, lambda = 5)
 max(x) == max2(x, TRUE)
 microbenchmark(max(x),
                max2(x, TRUE),
-               times = 1000)
+               times = 100)
 }

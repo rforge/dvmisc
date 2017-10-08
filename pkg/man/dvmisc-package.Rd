@@ -6,17 +6,17 @@
 Miscellaneous General-Purpose Functions
 }
 \description{
-A collection of general-purpose R functions, most of which are simple functions
-that do something convenient, e.g. easily create histogram with fitted PDF/PMF
-curve, create equal-interval groups, assess linearity in logistic regression, or
-extract MSE from a fitted regression model.
+Faster versions of base R functions (e.g. mean2, var2, weighted.mean2) and 
+miscellaneous functions that do something convenient (e.g. create histogram with 
+fitted PDF/PMF curve, create BMI groups, assess linearity assumption in logistic 
+regression, extract MSE from a fitted regression model).
 }
 \details{
 \tabular{ll}{
 Package: \tab dvmisc\cr
 Type: \tab Package\cr
 Version: \tab 1.1.1\cr
-Date: \tab 2017-10-07\cr
+Date: \tab 2017-10-08\cr
 License: \tab GPL-2\cr
 }
 The following functions are included:

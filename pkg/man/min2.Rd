@@ -43,24 +43,24 @@ x <- rnorm(100000)
 min(x) == min2(x)
 microbenchmark(min(x),
                min2(x),
-               times = 1000)
+               times = 100)
 
 x <- rpois(100000, lambda = 5)
 min(x) == min2(x, TRUE)
 microbenchmark(min(x),
                min2(x, TRUE),
-               times = 1000)
+               times = 100)
 
 # For short vectors, min2 is slower than min
 x <- rnorm(100)
 min(x) == min2(x)
 microbenchmark(min(x),
                min2(x),
-               times = 1000)
+               times = 100)
 
 x <- rpois(100, lambda = 5)
 min(x) == min2(x, TRUE)
 microbenchmark(min(x),
                min2(x, TRUE),
-               times = 1000)
+               times = 100)
 }

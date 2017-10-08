@@ -46,7 +46,7 @@ y <- rnorm(1000)
 abs(cov(x, y) - cov2(x, y))
 microbenchmark(cov(x, y),
                cov2(x, y),
-               times = 1000)
+               times = 100)
 
 # If x and y are integer vectors, setting xy.integer = TRUE will make it even
 # faster
@@ -55,5 +55,5 @@ y <- rpois(1000, lambda = 5)
 microbenchmark(cov(x, y),
                cov2(x, y),
                cov2(x, y, TRUE),
-               times = 1000)
+               times = 100)
 }
