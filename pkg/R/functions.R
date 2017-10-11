@@ -963,14 +963,14 @@ diff1_i <- function(x) {
 
 
 # diff for numeric values
-diff_n <- function(x) {
-  .Call('dvmisc_diffc_n', PACKAGE = 'dvmisc', x)
+diff_n <- function(x, lag = 1) {
+  .Call('dvmisc_diffc_n', PACKAGE = 'dvmisc', x, lag)
 }
 
 
 # diff for integer values
-diff_i <- function(x) {
-  .Call('dvmisc_diffc_i', PACKAGE = 'dvmisc', x)
+diff_i <- function(x, lag = 1) {
+  .Call('dvmisc_diffc_i', PACKAGE = 'dvmisc', x, lag)
 }
 
 
