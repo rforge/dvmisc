@@ -926,6 +926,54 @@ max_i <- function(x) {
 }
 
 
+# "Range" of numeric values
+range_n <- function(x) {
+  .Call('dvmisc_rangec_n', PACKAGE = 'dvmisc', x)
+}
+
+
+# "Range" of integer values
+range_i <- function(x) {
+  .Call('dvmisc_rangec_i', PACKAGE = 'dvmisc', x)
+}
+
+
+# True range of numeric values
+true_range_n <- function(x) {
+  .Call('dvmisc_true_rangec_n', PACKAGE = 'dvmisc', x)
+}
+
+
+# True range of integer values
+true_range_i <- function(x) {
+  .Call('dvmisc_true_rangec_i', PACKAGE = 'dvmisc', x)
+}
+
+
+# 1-unit diff for numeric values
+diff1_n <- function(x) {
+  .Call('dvmisc_diff1c_n', PACKAGE = 'dvmisc', x)
+}
+
+
+# 1-unit diff for integer values
+diff1_i <- function(x) {
+  .Call('dvmisc_diff1c_i', PACKAGE = 'dvmisc', x)
+}
+
+
+# diff for numeric values
+diff_n <- function(x) {
+  .Call('dvmisc_diffc_n', PACKAGE = 'dvmisc', x)
+}
+
+
+# diff for integer values
+diff_i <- function(x) {
+  .Call('dvmisc_diffc_i', PACKAGE = 'dvmisc', x)
+}
+
+
 # which.min for numeric vector
 which_min_nv <- function(x) {
   .Call('dvmisc_which_minc_nv', PACKAGEK = 'dvmisc', x)

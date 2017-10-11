@@ -44,7 +44,7 @@ microbenchmark(mean(x),
                times = 100)
 
 # For very large integer objects, mean may be faster than mean_n. But then 
-mean_i should be even faster.
+# mean_i should be even faster.
 x <- rpois(100000, lambda = 5)
 mean(x) == mean_n(x)
 mean(x) == mean_i(x)

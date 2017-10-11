@@ -173,6 +173,128 @@ RcppExport SEXP dvmisc_maxc_i(SEXP xSEXP) {
   return __sexp_result;
   END_RCPP
 }
+// rangec_n
+NumericVector rangec_n(NumericVector x);
+RcppExport SEXP dvmisc_rangec_n(SEXP xSEXP) {
+  BEGIN_RCPP
+  SEXP __sexp_result;
+  {
+    Rcpp::RNGScope __rngScope;
+    NumericVector x = Rcpp::as<NumericVector >(xSEXP);
+    NumericVector __result = rangec_n(x);
+    PROTECT(__sexp_result = Rcpp::wrap(__result));
+  }
+  UNPROTECT(1);
+  return __sexp_result;
+  END_RCPP
+}
+// rangec_i
+IntegerVector rangec_i(IntegerVector x);
+RcppExport SEXP dvmisc_rangec_i(SEXP xSEXP) {
+  BEGIN_RCPP
+  SEXP __sexp_result;
+  {
+    Rcpp::RNGScope __rngScope;
+    IntegerVector x = Rcpp::as<IntegerVector >(xSEXP);
+    IntegerVector __result = rangec_i(x);
+    PROTECT(__sexp_result = Rcpp::wrap(__result));
+  }
+  UNPROTECT(1);
+  return __sexp_result;
+  END_RCPP
+}
+// real_rangec_n
+double real_rangec_n(NumericVector x);
+RcppExport SEXP dvmisc_real_rangec_n(SEXP xSEXP) {
+  BEGIN_RCPP
+  SEXP __sexp_result;
+  {
+    Rcpp::RNGScope __rngScope;
+    NumericVector x = Rcpp::as<NumericVector >(xSEXP);
+    double __result = real_rangec_n(x);
+    PROTECT(__sexp_result = Rcpp::wrap(__result));
+  }
+  UNPROTECT(1);
+  return __sexp_result;
+  END_RCPP
+}
+// real_rangec_i
+int real_rangec_i(IntegerVector x);
+RcppExport SEXP dvmisc_real_rangec_i(SEXP xSEXP) {
+  BEGIN_RCPP
+  SEXP __sexp_result;
+  {
+    Rcpp::RNGScope __rngScope;
+    IntegerVector x = Rcpp::as<IntegerVector >(xSEXP);
+    int __result = real_rangec_i(x);
+    PROTECT(__sexp_result = Rcpp::wrap(__result));
+  }
+  UNPROTECT(1);
+  return __sexp_result;
+  END_RCPP
+}
+// diff1c_n
+NumericVector diff1c_n(NumericVector x);
+RcppExport SEXP dvmisc_diff1c_n(SEXP xSEXP) {
+  BEGIN_RCPP
+  SEXP __sexp_result;
+  {
+    Rcpp::RNGScope __rngScope;
+    NumericVector x = Rcpp::as<NumericVector >(xSEXP);
+    NumericVector __result = diff1c_n(x);
+    PROTECT(__sexp_result = Rcpp::wrap(__result));
+  }
+  UNPROTECT(1);
+  return __sexp_result;
+  END_RCPP
+}
+// diff1c_i
+IntegerVector diff1c_i(IntegerVector x);
+RcppExport SEXP dvmisc_diff1c_i(SEXP xSEXP) {
+  BEGIN_RCPP
+  SEXP __sexp_result;
+  {
+    Rcpp::RNGScope __rngScope;
+    NumericVector x = Rcpp::as<NumericVector >(xSEXP);
+    IntegerVector __result = diff1c_i(x);
+    PROTECT(__sexp_result = Rcpp::wrap(__result));
+  }
+  UNPROTECT(1);
+  return __sexp_result;
+  END_RCPP
+}
+// diffc_n
+NumericVector diffc_n(NumericVector x, int lag);
+RcppExport SEXP dvmisc_diffc_n(SEXP xSEXP, SEXP lagSEXP) {
+  BEGIN_RCPP
+  SEXP __sexp_result;
+  {
+    Rcpp::RNGScope __rngScope;
+    NumericVector x = Rcpp::as<NumericVector >(xSEXP);
+    int lag = Rcpp::as<int >(lagSEXP);
+    NumericVector __result = diffc_n(x, lag);
+    PROTECT(__sexp_result = Rcpp::wrap(__result));
+  }
+  UNPROTECT(1);
+  return __sexp_result;
+  END_RCPP
+}
+// diffc_i
+IntegerVector diffc_i(IntegerVector x, int lag);
+RcppExport SEXP dvmisc_diffc_i(SEXP xSEXP, SEXP lagSEXP) {
+  BEGIN_RCPP
+  SEXP __sexp_result;
+  {
+    Rcpp::RNGScope __rngScope;
+    IntegerVector x = Rcpp::as<NumericVector >(xSEXP);
+    int lag = Rcpp::as<int >(lagSEXP);
+    IntegerVector __result = diffc_i(x, lag);
+    PROTECT(__sexp_result = Rcpp::wrap(__result));
+  }
+  UNPROTECT(1);
+  return __sexp_result;
+  END_RCPP
+}
 // which_minc_nv
 int which_minc_nv(NumericVector x);
 RcppExport SEXP dvmisc_which_minc_nv(SEXP xSEXP) {
