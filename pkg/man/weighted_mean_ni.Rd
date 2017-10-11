@@ -30,7 +30,7 @@ your \code{x} and \code{w}:
 
 \code{\link{weighted_mean_nn}} for numeric \code{x}, numeric \code{w} \cr
 \code{\link{weighted_mean_ni}} for numeric \code{x}, integer \code{w} \cr
-\code{\link{weighted_mean_in}} for integer \code{x}, numeric \code{w] \cr
+\code{\link{weighted_mean_in}} for integer \code{x}, numeric \code{w} \cr
 \code{\link{weighted_mean_ii}} for integer \code{x}, integer \code{w} \cr
 
 These functions typically execute several times faster than the base R function

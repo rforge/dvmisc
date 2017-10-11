@@ -204,14 +204,14 @@ RcppExport SEXP dvmisc_which_minc_iv(SEXP xSEXP) {
   END_RCPP
 }
 // which_minc_nm
-integerVector which_minc_nm(NumericMatrix x);
+IntegerVector which_minc_nm(NumericMatrix x);
 RcppExport SEXP dvmisc_which_minc_nm(SEXP xSEXP) {
   BEGIN_RCPP
   SEXP __sexp_result;
   {
     Rcpp::RNGScope __rngScope;
     NumericMatrix x = Rcpp::as<NumericMatrix >(xSEXP);
-    integerVector __result = which_minc_nm(x);
+    IntegerVector __result = which_minc_nm(x);
     PROTECT(__sexp_result = Rcpp::wrap(__result));
   }
   UNPROTECT(1);
@@ -219,14 +219,14 @@ RcppExport SEXP dvmisc_which_minc_nm(SEXP xSEXP) {
   END_RCPP
 }
 // which_minc_im
-integerVector which_minc_im(IntegerMatrix x);
+IntegerVector which_minc_im(IntegerMatrix x);
 RcppExport SEXP dvmisc_which_minc_im(SEXP xSEXP) {
   BEGIN_RCPP
   SEXP __sexp_result;
   {
     Rcpp::RNGScope __rngScope;
     IntegerMatrix x = Rcpp::as<IntegerMatrix >(xSEXP);
-    integerVector __result = which_minc_im(x);
+    IntegerVector __result = which_minc_im(x);
     PROTECT(__sexp_result = Rcpp::wrap(__result));
   }
   UNPROTECT(1);
@@ -264,14 +264,14 @@ RcppExport SEXP dvmisc_which_maxc_iv(SEXP xSEXP) {
   END_RCPP
 }
 // which_maxc_nm
-integerVector which_maxc_nm(NumericMatrix x);
+IntegerVector which_maxc_nm(NumericMatrix x);
 RcppExport SEXP dvmisc_which_maxc_nm(SEXP xSEXP) {
   BEGIN_RCPP
   SEXP __sexp_result;
   {
     Rcpp::RNGScope __rngScope;
     NumericMatrix x = Rcpp::as<NumericMatrix >(xSEXP);
-    integerVector __result = which_maxc_nm(x);
+    IntegerVector __result = which_maxc_nm(x);
     PROTECT(__sexp_result = Rcpp::wrap(__result));
   }
   UNPROTECT(1);
@@ -279,14 +279,14 @@ RcppExport SEXP dvmisc_which_maxc_nm(SEXP xSEXP) {
   END_RCPP
 }
 // which_maxc_im
-integerVector which_maxc_im(IntegerMatrix x);
+IntegerVector which_maxc_im(IntegerMatrix x);
 RcppExport SEXP dvmisc_which_maxc_im(SEXP xSEXP) {
   BEGIN_RCPP
   SEXP __sexp_result;
   {
     Rcpp::RNGScope __rngScope;
     IntegerMatrix x = Rcpp::as<IntegerMatrix >(xSEXP);
-    integerVector __result = which_maxc_im(x);
+    IntegerVector __result = which_maxc_im(x);
     PROTECT(__sexp_result = Rcpp::wrap(__result));
   }
   UNPROTECT(1);
