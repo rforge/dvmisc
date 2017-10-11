@@ -6,17 +6,18 @@
 Miscellaneous General-Purpose Functions
 }
 \description{
-Faster versions of base R functions (e.g. mean2, var2, weighted.mean2) and 
-miscellaneous functions that do something convenient (e.g. create histogram with 
-fitted PDF/PMF curve, create BMI groups, assess linearity assumption in logistic 
-regression, extract MSE from a fitted regression model).
+Faster versions of base R functions (e.g. for calculating standard deviation, 
+covariance, and weighted mean) and miscellaneous functions that do something 
+convenient (e.g. create histogram with fitted PDF/PMF curve, create BMI groups, 
+assess linearity assumption in logistic regression, extract MSE from a fitted 
+regression model).
 }
 \details{
 \tabular{ll}{
 Package: \tab dvmisc\cr
 Type: \tab Package\cr
 Version: \tab 1.1.1\cr
-Date: \tab 2017-10-08\cr
+Date: \tab 2017-10-10\cr
 License: \tab GPL-2\cr
 }
 The following functions are included:
@@ -34,28 +35,35 @@ The following functions are included:
 \code{\link{which.max2}}\cr
 \code{\link{get.mse}}\cr
 \code{\link{sum}}\cr
-\code{\link{cmean}}\cr
-\code{\link{cweighted.mean}}\cr
-\code{\link{cmedian}}\cr
-\code{\link{cquantile}}\cr
-\code{\link{cmin}}\cr
-\code{\link{cmax}}\cr
-\code{\link{crange}}\cr
-\code{\link{csd}}\cr
-\code{\link{cvar}}\cr
-\code{\link{ccov}}\cr
-\code{\link{ccor}}\cr
 \code{\link{histo}}\cr
 \code{\link{movingave}}\cr
-\code{\link{sum_integers}}\cr
-\code{\link{mean2}}\cr
-\code{\link{var2}}\cr
-\code{\link{cov2}}\cr
-\code{\link{sd2}}\cr
-\code{\link{pooled.var}}\cr
-\code{\link{min2}}\cr
-\code{\link{max2}}\cr
-\code{\link{weighted.mean2}}
+\code{\link{sum_i}}\cr
+\code{\link{mean_n}}\cr
+\code{\link{mean_i}}\cr
+\code{\link{var_n}}\cr
+\code{\link{var_i}}\cr
+\code{\link{cov_n}}\cr
+\code{\link{cov_i}}\cr
+\code{\link{sd_n}}\cr
+\code{\link{sd_i}}\cr
+\code{\link{min_n}}\cr
+\code{\link{min_i}}\cr
+\code{\link{max_n}}\cr
+\code{\link{max_i}}\cr
+\code{\link{which_min_nv}}\cr
+\code{\link{which_min_iv}}\cr
+\code{\link{which_min_nm}}\cr
+\code{\link{which_min_im}}\cr
+\code{\link{which_max_nv}}\cr
+\code{\link{which_max_iv}}\cr
+\code{\link{which_max_nm}}\cr
+\code{\link{which_max_im}}\cr
+\code{\link{weighted.mean_nn}}\cr
+\code{\link{weighted.mean_ni}}\cr
+\code{\link{weighted.mean_in}}\cr
+\code{\link{weighted.mean_ii}}\cr
+\code{\link{pooled_var_n}}\cr
+\code{\link{pooled_var_i}}\cr
 }
 \author{
 Dane R. Van Domelen

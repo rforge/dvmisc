@@ -22,8 +22,8 @@ get.mse(model.fit, var.estimate = FALSE)
 Fitted regression model returned from \code{\link{lm}} or \code{\link{glm}}.
 }
   \item{var.estimate}{
-If \code{TRUE}, function returns a variance estimate for the MSE, defined as
-\code{2 * MSE^2 / (n - p)}.
+If \code{TRUE}, function returns a variance estimate for the error variance, 
+defined as \code{2 * MSE^2 / (n - p)}.
 }
 }
 \details{
@@ -32,7 +32,7 @@ NA
 \value{
 If \code{var.estimate = FALSE}, numeric value indicating the MSE; if
 \code{var.estimate = TRUE}, named numeric vector indicating both the MSE and a
-variance estimate for the MSE.
+variance estimate for the error variance.
 }
 \note{
 NA

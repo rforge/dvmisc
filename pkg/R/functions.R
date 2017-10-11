@@ -601,98 +601,26 @@ logodds.graph <- function(y, group, error.bars = "none", alpha = 0.05,
 }
 
 
-# Versions of which.min and which.max that gives row/column positions for
-# matrices
-which.min2 <- function(x, only.first = FALSE, arr.ind = TRUE) {
-
-  loc <- which(x == min(x), arr.ind = arr.ind)
-  if (only.first) {
-    if (is.matrix(loc)) {
-      loc <- loc[1, , drop = FALSE]
-    } else {
-      loc <- loc[1]
-    }
-  }
-  return(loc)
-
-}
-
-
-which.max2 <- function(x, only.first = FALSE, arr.ind = TRUE) {
-
-  loc <- which(x == max(x), arr.ind = arr.ind)
-  if (only.first) {
-    if (is.matrix(loc)) {
-      loc <- loc[1, , drop = FALSE]
-    } else {
-      loc <- loc[1]
-    }
-  }
-  return(loc)
-
-}
-
-
 # Extract mean squared error from lm or glm model
 get.mse <- function(model.fit, var.estimate = FALSE) {
 
   # Extract MSE from model.fit
-  class1 <- class(model.fit)[1]
-  if (class1 == "lm") {
+  class_model.fit <- class(model.fit)[1]
+  if (class_model.fit == "lm") {
     mse <- rev(anova(model.fit)$"Mean Sq")[1]
-  } else if (class1 == "glm") {
+  } else if (class_model.fit == "glm") {
     mse <- sum(model.fit$residuals^2) / model.fit$df.residual
   }
 
-  # Get V.hat(MSE) if requested
+  # Get variance estimate for error variance if requested
   if (var.estimate) {
     mse.var <- 2 * mse^2 / model.fit$df.residual
-    mse <- c(mse, mse.var)
-    names(mse) <- c("mse", "var")
+    mse <- c(mse.hat = mse, mse.var = mse.var)
   }
 
   # Return mse variable
   return(mse)
 
-}
-
-
-# "Complete data" versions of sum, mean, median, etc., with default na.rm = TRUE
-csum <- function(x, na.rm = TRUE, ...) {
-  sum(x = x, na.rm = na.rm, ...)
-}
-cmean <- function(x, na.rm = TRUE, ...) {
-  mean(x = x, na.rm = na.rm, ...)
-}
-cweighted.mean <- function(x, w, na.rm = TRUE, ...) {
-  weighted.mean(x = x, w = w, na.rm = na.rm, ...)
-}
-cmedian <- function(x, na.rm = TRUE, ...) {
-  median(x = x, na.rm = na.rm, ...)
-}
-cquantile <- function(x, na.rm = TRUE, ...) {
-  quantile(x = x, na.rm = na.rm, ...)
-}
-cmin <- function(..., na.rm = TRUE) {
-  min(..., na.rm = na.rm)
-}
-cmax <- function(..., na.rm = TRUE) {
-  max(..., na.rm = na.rm)
-}
-crange <- function(..., na.rm = TRUE) {
-  range(..., na.rm = na.rm)
-}
-csd <- function(x, na.rm = TRUE) {
-  sd(x, na.rm = na.rm)
-}
-cvar <- function(x, na.rm = TRUE, ...) {
-  var(x, na.rm = na.rm, ...)
-}
-ccov <- function(x, use = "complete.obs", ...) {
-  cov(x, use = use, ...)
-}
-ccor <- function(x, use = "complete.obs", ...) {
-  cor(x, use = use, ...)
 }
 
 
@@ -909,103 +837,184 @@ histo <- function(x,
 }
 
 
+
 # C++ functions
+
+
+# Moving average
 movingave <- function(x, window) {
   .Call('dvmisc_movingavec', PACKAGE = 'dvmisc', x, window)
 }
 
 
-# Faster sum for long integer vectors
-sum_integers <- function(x) {
+# Sum of integers
+sum_i <- function(x) {
   .Call('dvmisc_sumc_i', PACKAGE = 'dvmisc', x)
 }
 
 
-# Faster mean (surprising!)
-mean2 <- function(x, x.integer = FALSE) {
-  if (x.integer) {
-    .Call('dvmisc_meanc_i', PACKAGE = 'dvmisc', x)
-  } else {
-    sum(x) / length(x)
-  }
+# Mean of numeric values
+mean_n <- function(x) {
+  out <- sum(x) / length(x)
+  return(out)
 }
 
 
-# Sample variance
-var2 <- function(x, x.integer = FALSE) {
-  if (x.integer) {
-    .Call('dvmisc_varc_i', PACKAGE = 'dvmisc', x)
-  } else {
-    .Call('dvmisc_varc_n', PACKAGE = 'dvmisc', x)
-  }
+# Mean of integer values
+mean_i <- function(x) {
+  .Call('dvmisc_meanc_i', PACKAGE = 'dvmisc', x)
 }
 
 
-# Sample covariance
-cov2 <- function(x, y, xy.integer = FALSE) {
-  if (xy.integer) {
-    .Call('dvmisc_covc_i', PACKAGE = 'dvmisc', x, y)
-  } else {
-    .Call('dvmisc_covc_n', PACKAGE = 'dvmisc', x, y)
-  }
+# Sample variance for numeric values
+var_n <- function(x) {
+  .Call('dvmisc_varc_n', PACKAGE = 'dvmisc', x)
 }
 
 
-# Sample standard deviation
-sd2 <- function(x, x.integer = FALSE) {
-  if (x.integer) {
-    sqrt(.Call('dvmisc_varc_i', PACKAGE = 'dvmisc', x))
-  } else {
-    sqrt(.Call('dvmisc_varc_n', PACKAGE = 'dvmisc', x))
-  }
+# Sample variance for integer values
+var_i <- function(x) {
+  .Call('dvmisc_varc_i', PACKAGE = 'dvmisc', x)
 }
 
 
-# Pooled sample variance
-pooled.var <- function(x, y, xy.integer = FALSE) {
+# Sample covariance for numeric values
+cov_n <- function(x, y) {
+  .Call('dvmisc_covc_n', PACKAGE = 'dvmisc', x, y)
+}
+
+
+# Sample covariance for integer values
+cov_i <- function(x, y) {
+  .Call('dvmisc_covc_i', PACKAGE = 'dvmisc', x, y)
+}
+
+
+# Sample standard deviation for numeric values
+sd_n <- function(x) {
+  sqrt(.Call('dvmisc_varc_n', PACKAGE = 'dvmisc', x))
+}
+
+
+# Sample standard deviation for integer values
+sd_i <- function(x) {
+  sqrt(.Call('dvmisc_varc_i', PACKAGE = 'dvmisc', x))
+}
+
+
+# Minimum of numeric values
+min_n <- function(x) {
+  .Call('dvmisc_minc_n', PACKAGE = 'dvmisc', x)
+}
+
+
+# Minimum of integer values
+min_i <- function(x) {
+  .Call('dvmisc_minc_i', PACKAGE = 'dvmisc', x)
+}
+
+
+# Maximum of numeric values
+max_n <- function(x) {
+  .Call('dvmisc_maxc_n', PACKAGE = 'dvmisc', x)
+}
+
+
+# Maximum of integer values
+max_i <- function(x) {
+  .Call('dvmisc_maxc_i', PACKAGE = 'dvmisc', x)
+}
+
+
+# which.min for numeric vector
+which_min_nv <- function(x) {
+  .Call('dvmisc_which_minc_nv', PACKAGEK = 'dvmisc', x)
+}
+
+
+# which.min for integer vector
+which_min_iv <- function(x) {
+  .Call('dvmisc_which_minc_iv', PACKAGEK = 'dvmisc', x)
+}
+
+
+# which.min for numeric matrix
+which_min_nm <- function(x) {
+  .Call('dvmisc_which_minc_nm', PACKAGEK = 'dvmisc', x)
+}
+
+
+# which.min for integer matrix
+which_min_im <- function(x) {
+  .Call('dvmisc_which_minc_im', PACKAGEK = 'dvmisc', x)
+}
+
+
+# which.max for numeric vector
+which_max_nv <- function(x) {
+  .Call('dvmisc_which_maxc_nv', PACKAGEK = 'dvmisc', x)
+}
+
+
+# which.max for integer vector
+which_max_iv <- function(x) {
+  .Call('dvmisc_which_maxc_iv', PACKAGEK = 'dvmisc', x)
+}
+
+
+# which.max for numeric matrix
+which_max_nm <- function(x) {
+  .Call('dvmisc_which_maxc_nm', PACKAGEK = 'dvmisc', x)
+}
+
+
+# which.max for integer matrix
+which_max_im <- function(x) {
+  .Call('dvmisc_which_maxc_im', PACKAGEK = 'dvmisc', x)
+}
+
+
+# Weighted mean for numeric values with numeric weights
+weighted_mean_nn <- function(x, w) {
+  .Call('dvmisc_weighted_meanc_nn', PACKAGE = 'dvmisc', x)
+}
+
+
+# Weighted mean for numeric values with integer weights
+weighted_mean_ni <- function(x, w) {
+  .Call('dvmisc_weighted_meanc_ni', PACKAGE = 'dvmisc', x)
+}
+
+
+# Weighted mean for integer values with numeric weights
+weighted_mean_in <- function(x, w) {
+  .Call('dvmisc_weighted_meanc_in', PACKAGE = 'dvmisc', x)
+}
+
+
+# Weighted mean for integer values with integer weights
+weighted_mean_ii <- function(x, w) {
+  .Call('dvmisc_weighted_meanc_ii', PACKAGE = 'dvmisc', x)
+}
+
+
+# Pooled sample variance for numeric vectors
+pooled_var_n <- function(x, y) {
   n1 <- length(x)
   n2 <- length(y)
-  if (xy.integer) {
-    ((n1 - 1) * var2(x, TRUE) + (n2 - 1) * var2(y, TRUE)) / (n1 + n2 - 2)
-  } else {
-    ((n1 - 1) * var2(x) + (n2 - 1) * var2(y)) / (n1 + n2 - 2)
-  }
+  s2 <- ((n1 - 1) * .Call('dvmisc_varc_n', PACKAGE = 'dvmisc', x) + 
+           (n2 - 1) * .Call('dvmisc_varc_n', PACKAGE = 'dvmisc', y)) / 
+    (n1 + n2 - 2)
+  return(s2)
 }
 
 
-# Minimum
-min2 <- function(x, x.integer = FALSE) {
-  if (x.integer) {
-    .Call('dvmisc_minc_i', PACKAGE = 'dvmisc', x)
-  } else {
-    .Call('dvmisc_minc_n', PACKAGE = 'dvmisc', x)
-  }
-}
-
-
-# Maximum
-max2 <- function(x, x.integer = FALSE) {
-  if (x.integer) {
-    .Call('dvmisc_maxc_i', PACKAGE = 'dvmisc', x)
-  } else {
-    .Call('dvmisc_maxc_n', PACKAGE = 'dvmisc', x)
-  }
-}
-
-
-# Weighted mean
-weighted.mean2 <- function(x, w, x.integer = FALSE, w.integer = FALSE) {
-  if (x.integer) {
-    if (w.integer) {
-      .Call('dvmisc_weighted_meanc_ii', PACKAGE = 'dvmisc', x)
-    } else {
-      .Call('dvmisc_weighted_meanc_in', PACKAGE = 'dvmisc', x)
-    }
-  } else {
-    if (w.integer) {
-      .Call('dvmisc_weighted_meanc_ni', PACKAGE = 'dvmisc', x)
-    } else {
-      .Call('dvmisc_weighted_meanc_nn', PACKAGE = 'dvmisc', x)
-    }
-  }
+# Pooled sample variance for integer vectors
+pooled_var_i <- function(x, y) {
+  n1 <- length(x)
+  n2 <- length(y)
+  s2 <- ((n1 - 1) * .Call('dvmisc_varc_i', PACKAGE = 'dvmisc', x) + 
+           (n2 - 1) * .Call('dvmisc_varc_i', PACKAGE = 'dvmisc', y)) / 
+    (n1 + n2 - 2)
+  return(s2)
 }
