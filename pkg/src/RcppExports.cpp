@@ -203,30 +203,30 @@ RcppExport SEXP dvmisc_rangec_i(SEXP xSEXP) {
   return __sexp_result;
   END_RCPP
 }
-// real_rangec_n
-double real_rangec_n(NumericVector x);
-RcppExport SEXP dvmisc_real_rangec_n(SEXP xSEXP) {
+// true_rangec_n
+double true_rangec_n(NumericVector x);
+RcppExport SEXP dvmisc_true_rangec_n(SEXP xSEXP) {
   BEGIN_RCPP
   SEXP __sexp_result;
   {
     Rcpp::RNGScope __rngScope;
     NumericVector x = Rcpp::as<NumericVector >(xSEXP);
-    double __result = real_rangec_n(x);
+    double __result = true_rangec_n(x);
     PROTECT(__sexp_result = Rcpp::wrap(__result));
   }
   UNPROTECT(1);
   return __sexp_result;
   END_RCPP
 }
-// real_rangec_i
-int real_rangec_i(IntegerVector x);
-RcppExport SEXP dvmisc_real_rangec_i(SEXP xSEXP) {
+// true_rangec_i
+int true_rangec_i(IntegerVector x);
+RcppExport SEXP dvmisc_true_rangec_i(SEXP xSEXP) {
   BEGIN_RCPP
   SEXP __sexp_result;
   {
     Rcpp::RNGScope __rngScope;
     IntegerVector x = Rcpp::as<IntegerVector >(xSEXP);
-    int __result = real_rangec_i(x);
+    int __result = true_rangec_i(x);
     PROTECT(__sexp_result = Rcpp::wrap(__result));
   }
   UNPROTECT(1);
