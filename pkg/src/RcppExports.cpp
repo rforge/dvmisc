@@ -255,7 +255,7 @@ RcppExport SEXP dvmisc_diff1c_i(SEXP xSEXP) {
   SEXP __sexp_result;
   {
     Rcpp::RNGScope __rngScope;
-    NumericVector x = Rcpp::as<NumericVector >(xSEXP);
+    IntegerVector x = Rcpp::as<IntegerVector >(xSEXP);
     IntegerVector __result = diff1c_i(x);
     PROTECT(__sexp_result = Rcpp::wrap(__result));
   }
@@ -286,7 +286,7 @@ RcppExport SEXP dvmisc_diffc_i(SEXP xSEXP, SEXP lagSEXP) {
   SEXP __sexp_result;
   {
     Rcpp::RNGScope __rngScope;
-    IntegerVector x = Rcpp::as<NumericVector >(xSEXP);
+    IntegerVector x = Rcpp::as<IntegerVector >(xSEXP);
     int lag = Rcpp::as<int >(lagSEXP);
     IntegerVector __result = diffc_i(x, lag);
     PROTECT(__sexp_result = Rcpp::wrap(__result));
