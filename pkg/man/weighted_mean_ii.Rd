@@ -51,7 +51,7 @@ NA
 # weighted_mean_ii is typically much faster than weighted.mean
 x <- rpois(1000, lambda = 5)
 w <- rpois(1000, lambda = 5)
-all.equal(weighted.mean(x, w), weighted_mean_ii(x, w))
+#all.equal(weighted.mean(x, w), weighted_mean_ii(x, w))
 microbenchmark(weighted.mean(x, w),
                weighted_mean_ii(x, w),
                times = 100)

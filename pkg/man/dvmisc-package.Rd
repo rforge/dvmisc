@@ -64,10 +64,10 @@ The following functions are included:
 \code{\link{which_max_iv}}\cr
 \code{\link{which_max_nm}}\cr
 \code{\link{which_max_im}}\cr
-\code{\link{weighted.mean_nn}}\cr
-\code{\link{weighted.mean_ni}}\cr
-\code{\link{weighted.mean_in}}\cr
-\code{\link{weighted.mean_ii}}\cr
+\code{\link{weighted_mean_nn}}\cr
+\code{\link{weighted_mean_ni}}\cr
+\code{\link{weighted_mean_in}}\cr
+\code{\link{weighted_mean_ii}}\cr
 \code{\link{pooled_var_n}}\cr
 \code{\link{pooled_var_i}}\cr
 }
