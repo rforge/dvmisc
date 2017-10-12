@@ -4,8 +4,8 @@
 Return (Row, Column) Index of (First) Minimum of an Integer Matrix
 }
 \description{
-Written in C++, this function tends to run much faster than the equivalent base 
-R solution \code{which(x == min(x), arr.ind = TRUE)}.
+Written in C++, this function tends to run much faster than the equivalent (if 
+minimum is unique) base R solution \code{which(x == min(x), arr.ind = TRUE)}.
 }
 \usage{
 which_min_im(x)

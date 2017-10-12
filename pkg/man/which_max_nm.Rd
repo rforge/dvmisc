@@ -4,8 +4,8 @@
 Return (Row, Column) Index of (First) Maximum of a Numeric Matrix
 }
 \description{
-Written in C++, this function tends to run much faster than the equivalent base 
-R solution \code{which(x == max(x), arr.ind = TRUE)}.
+Written in C++, this function tends to run much faster than the equivalent (if 
+maximum is unique) base R solution \code{which(x == max(x), arr.ind = TRUE)}.
 }
 \usage{
 which_max_nm(x)

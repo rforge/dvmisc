@@ -4,8 +4,8 @@
 Return (Row, Column) Index of (First) Maximum of an Integer Matrix
 }
 \description{
-Written in C++, this function tends to run much faster than the equivalent base 
-R solution \code{which(x == max(x), arr.ind = TRUE)}.
+Written in C++, this function tends to run much faster than the equivalent (if 
+maximum is unique) base R solution \code{which(x == max(x), arr.ind = TRUE)}.
 }
 \usage{
 which_max_im(x)
@@ -42,9 +42,9 @@ NA
 }
 \examples{
 # which_max_im is typically much faster than which(x == max(x), arr.ind = TRUE)
-x <- matrix(rpois(100, lambda = 10), ncol = 10)
-all(which(x == max(x), arr.ind = TRUE) == which_max_im(x))
-microbenchmark(which(x == max(x), arr.ind = TRUE),
-               which_max_im(x),
-               times = 100)
+x <- matrix(rpois(100, lambda = 15), ncol = 10)
+#all(which(x == max(x), arr.ind = TRUE) == which_max_im(x))
+#microbenchmark(which(x == max(x), arr.ind = TRUE),
+#               which_max_im(x),
+#               times = 100)
 }
