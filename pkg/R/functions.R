@@ -1024,25 +1024,25 @@ which_max_im <- function(x) {
 
 # Weighted mean for numeric values with numeric weights
 weighted_mean_nn <- function(x, w) {
-  .Call('dvmisc_weighted_meanc_nn', PACKAGE = 'dvmisc', x)
+  .Call('dvmisc_weighted_meanc_nn', PACKAGE = 'dvmisc', x, w)
 }
 
 
 # Weighted mean for numeric values with integer weights
 weighted_mean_ni <- function(x, w) {
-  .Call('dvmisc_weighted_meanc_ni', PACKAGE = 'dvmisc', x)
+  .Call('dvmisc_weighted_meanc_ni', PACKAGE = 'dvmisc', x, w)
 }
 
 
 # Weighted mean for integer values with numeric weights
 weighted_mean_in <- function(x, w) {
-  .Call('dvmisc_weighted_meanc_in', PACKAGE = 'dvmisc', x)
+  .Call('dvmisc_weighted_meanc_in', PACKAGE = 'dvmisc', x, w)
 }
 
 
 # Weighted mean for integer values with integer weights
 weighted_mean_ii <- function(x, w) {
-  .Call('dvmisc_weighted_meanc_ii', PACKAGE = 'dvmisc', x)
+  .Call('dvmisc_weighted_meanc_ii', PACKAGE = 'dvmisc', x, w)
 }
 
 
