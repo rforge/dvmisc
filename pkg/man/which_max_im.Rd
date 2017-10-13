@@ -43,8 +43,8 @@ NA
 \examples{
 # which_max_im is typically much faster than which(x == max(x), arr.ind = TRUE)
 x <- matrix(rpois(100, lambda = 15), ncol = 10)
-#all(which(x == max(x), arr.ind = TRUE) == which_max_im(x))
-#microbenchmark(which(x == max(x), arr.ind = TRUE),
-#               which_max_im(x),
-#               times = 100)
+all(which(x == max(x), arr.ind = TRUE) == which_max_im(x))
+microbenchmark(which(x == max(x), arr.ind = TRUE),
+               which_max_im(x),
+               times = 100)
 }

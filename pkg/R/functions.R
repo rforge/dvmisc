@@ -976,49 +976,49 @@ diff_i <- function(x, lag = 1) {
 
 # which.min for numeric vector
 which_min_nv <- function(x) {
-  .Call('dvmisc_which_minc_nv', PACKAGEK = 'dvmisc', x)
+  .Call('dvmisc_which_minc_nv', PACKAGE = 'dvmisc', x)
 }
 
 
 # which.min for integer vector
 which_min_iv <- function(x) {
-  .Call('dvmisc_which_minc_iv', PACKAGEK = 'dvmisc', x)
+  .Call('dvmisc_which_minc_iv', PACKAGE = 'dvmisc', x)
 }
 
 
 # which.min for numeric matrix
 which_min_nm <- function(x) {
-  .Call('dvmisc_which_minc_nm', PACKAGEK = 'dvmisc', x)
+  .Call('dvmisc_which_minc_nm', PACKAGE = 'dvmisc', x)
 }
 
 
 # which.min for integer matrix
 which_min_im <- function(x) {
-  .Call('dvmisc_which_minc_im', PACKAGEK = 'dvmisc', x)
+  .Call('dvmisc_which_minc_im', PACKAGE = 'dvmisc', x)
 }
 
 
 # which.max for numeric vector
 which_max_nv <- function(x) {
-  .Call('dvmisc_which_maxc_nv', PACKAGEK = 'dvmisc', x)
+  .Call('dvmisc_which_maxc_nv', PACKAGE = 'dvmisc', x)
 }
 
 
 # which.max for integer vector
 which_max_iv <- function(x) {
-  .Call('dvmisc_which_maxc_iv', PACKAGEK = 'dvmisc', x)
+  .Call('dvmisc_which_maxc_iv', PACKAGE = 'dvmisc', x)
 }
 
 
 # which.max for numeric matrix
 which_max_nm <- function(x) {
-  .Call('dvmisc_which_maxc_nm', PACKAGEK = 'dvmisc', x)
+  .Call('dvmisc_which_maxc_nm', PACKAGE = 'dvmisc', x)
 }
 
 
 # which.max for integer matrix
 which_max_im <- function(x) {
-  .Call('dvmisc_which_maxc_im', PACKAGEK = 'dvmisc', x)
+  .Call('dvmisc_which_maxc_im', PACKAGE = 'dvmisc', x)
 }
 
 
