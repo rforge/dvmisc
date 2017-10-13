@@ -40,12 +40,12 @@ x <- rpois(100000, lambda = 5)
 min(x) == min_i(x)
 microbenchmark(min(x),
                min_i(x),
-               times = 100)
+               times = 50)
 
 # For smaller objects, min_i is slower than min
 x <- rpois(100, lambda = 5)
 min(x) == min_i(x)
 microbenchmark(min(x),
                min_i(x),
-               times = 100)
+               times = 50)
 }
