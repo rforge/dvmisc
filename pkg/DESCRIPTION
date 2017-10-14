@@ -2,7 +2,7 @@ Package: dvmisc
 Type: Package
 Title: Miscellaneous General-Purpose Functions
 Version: 1.1.1
-Date: 2017-10-13
+Date: 2017-10-14
 Author: Dane R. Van Domelen
 Maintainer: Dane R. Van Domelen <vandomed@gmail.com>
 Description: Faster versions of base R functions (e.g. for calculating standard deviation, covariance, and weighted mean) and miscellaneous functions that do something convenient (e.g. create histogram with fitted PDF/PMF curve, create BMI groups, assess linearity assumption in logistic regression, extract MSE from a fitted regression model).
