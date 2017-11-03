@@ -3,21 +3,20 @@
 \alias{dvmisc}
 \docType{package}
 \title{
-Miscellaneous General-Purpose Functions
+Faster Computation of Common Statistics and Miscellaneous Functions
 }
 \description{
-Faster versions of base R functions (e.g. for calculating standard deviation, 
-covariance, and weighted mean) and miscellaneous functions that do something 
-convenient (e.g. create histogram with fitted PDF/PMF curve, create BMI groups, 
-assess linearity assumption in logistic regression, extract MSE from a fitted 
-regression model).
+Faster versions of base R functions (e.g. mean, standard deviation, covariance,
+and weighted mean) along with miscellaneous functions for various purposes (e.g.
+create histogram with fitted PDF/PMF curve, create BMI groups, assess linearity
+assumption in logistic regression, extract MSE from a fitted regression model).
 }
 \details{
 \tabular{ll}{
 Package: \tab dvmisc\cr
 Type: \tab Package\cr
 Version: \tab 1.1.1\cr
-Date: \tab 2017-10-14\cr
+Date: \tab 2017-11-03\cr
 License: \tab GPL-2\cr
 }
 The following functions are included:
@@ -34,7 +33,6 @@ The following functions are included:
 \code{\link{get.mse}}\cr
 \code{\link{sum}}\cr
 \code{\link{histo}}\cr
-\code{\link{movingave}}\cr
 \code{\link{sum_i}}\cr
 \code{\link{mean_n}}\cr
 \code{\link{mean_i}}\cr
@@ -70,6 +68,10 @@ The following functions are included:
 \code{\link{weighted_mean_ii}}\cr
 \code{\link{pooled_var_n}}\cr
 \code{\link{pooled_var_i}}\cr
+\code{\link{prob_odds}}\cr
+\code{\link{prob_logit}}\cr
+\code{\link{odds_prob}}\cr
+\code{\link{logit_prob}}
 }
 \author{
 Dane R. Van Domelen

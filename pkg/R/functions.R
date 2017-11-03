@@ -837,16 +837,6 @@ histo <- function(x,
 }
 
 
-
-# C++ functions
-
-
-# Moving average
-movingave <- function(x, window) {
-  .Call('dvmisc_movingavec', PACKAGE = 'dvmisc', x, window)
-}
-
-
 # Sum of integers
 sum_i <- function(x) {
   .Call('dvmisc_sumc_i', PACKAGE = 'dvmisc', x)
@@ -1050,8 +1040,8 @@ weighted_mean_ii <- function(x, w) {
 pooled_var_n <- function(x, y) {
   n1 <- length(x)
   n2 <- length(y)
-  s2 <- ((n1 - 1) * .Call('dvmisc_varc_n', PACKAGE = 'dvmisc', x) + 
-           (n2 - 1) * .Call('dvmisc_varc_n', PACKAGE = 'dvmisc', y)) / 
+  s2 <- ((n1 - 1) * .Call('dvmisc_varc_n', PACKAGE = 'dvmisc', x) +
+           (n2 - 1) * .Call('dvmisc_varc_n', PACKAGE = 'dvmisc', y)) /
     (n1 + n2 - 2)
   return(s2)
 }
@@ -1061,8 +1051,37 @@ pooled_var_n <- function(x, y) {
 pooled_var_i <- function(x, y) {
   n1 <- length(x)
   n2 <- length(y)
-  s2 <- ((n1 - 1) * .Call('dvmisc_varc_i', PACKAGE = 'dvmisc', x) + 
-           (n2 - 1) * .Call('dvmisc_varc_i', PACKAGE = 'dvmisc', y)) / 
+  s2 <- ((n1 - 1) * .Call('dvmisc_varc_i', PACKAGE = 'dvmisc', x) +
+           (n2 - 1) * .Call('dvmisc_varc_i', PACKAGE = 'dvmisc', y)) /
     (n1 + n2 - 2)
   return(s2)
+}
+
+
+# Convert probability to odds
+prob_odds <- function(x) {
+  out <- x / (1 - x)
+  return(out)
+}
+
+
+# Convert probability to logit
+prob_logit <- function(x) {
+  out <- log(x / (1 - x))
+  return(out)
+}
+
+
+# Convert odds to probability
+odds_prob <- function(x) {
+  out <- x / (x + 1)
+  return(out)
+}
+
+
+# Convert logit to probability
+logit_prob <- function(x) {
+  exp_x <- exp(x)
+  out <- exp_x / (1 + exp_x)
+  return(out)
 }
