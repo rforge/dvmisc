@@ -5,22 +5,6 @@
 
 using namespace Rcpp;
 
-// movingavec
-NumericVector movingavec(NumericVector x, int window);
-RcppExport SEXP dvmisc_movingavec(SEXP xSEXP, SEXP windowSEXP) {
-BEGIN_RCPP
-    SEXP __sexp_result;
-    {
-        Rcpp::RNGScope __rngScope;
-        NumericVector x = Rcpp::as<NumericVector >(xSEXP);
-        int window = Rcpp::as<int >(windowSEXP);
-        NumericVector __result = movingavec(x, window);
-        PROTECT(__sexp_result = Rcpp::wrap(__result));
-    }
-    UNPROTECT(1);
-    return __sexp_result;
-END_RCPP
-}
 // sumc_i
 int sumc_i(IntegerVector x);
 RcppExport SEXP dvmisc_sumc_i(SEXP xSEXP) {
