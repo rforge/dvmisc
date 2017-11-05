@@ -7,16 +7,17 @@ Faster Computation of Common Statistics and Miscellaneous Functions
 }
 \description{
 Faster versions of base R functions (e.g. mean, standard deviation, covariance,
-and weighted mean) along with miscellaneous functions for various purposes (e.g.
-create histogram with fitted PDF/PMF curve, create BMI groups, assess linearity
-assumption in logistic regression, extract MSE from a fitted regression model).
+weighted mean), mostly written in C++, along with miscellaneous functions
+for various purposes (e.g. create histogram with fitted probability density
+function or probability mass function curve, create body mass index groups,
+assess linearity assumption in logistic regression).
 }
 \details{
 \tabular{ll}{
 Package: \tab dvmisc\cr
 Type: \tab Package\cr
 Version: \tab 1.1.1\cr
-Date: \tab 2017-11-03\cr
+Date: \tab 2017-11-05\cr
 License: \tab GPL-2\cr
 }
 The following functions are included:
