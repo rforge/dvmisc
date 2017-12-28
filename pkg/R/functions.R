@@ -1085,3 +1085,45 @@ logit_prob <- function(x) {
   out <- exp_x / (1 + exp_x)
   return(out)
 }
+
+
+# Trim tail probabilities
+trim <- function(x, p = NULL, tails = "both", cutpoints = NULL,
+                 keep.edge = TRUE) {
+
+  # If p specified, calculate cutpoints
+  if (! is.null(p)) {
+    if (tails == "both") {
+      probs <- c(p, 1 - p)
+    } else if (tails == "lower") {
+      probs <- c(p, 1)
+    } else if (tails == "upper") {
+      probs <- c(0, 1 - p)
+    }
+    cutpoints <- quantile(x, probs = probs)
+  }
+
+  # Trim tails
+  x.trimmed <- x[inside(x = x, ends = cutpoints, inclusive = keep.edge)]
+  return(x.trimmed)
+
+}
+
+
+# Combined head/tail function
+headtail <- function(x, ...) {
+
+  # Determine class of x
+  class.x <- class(x)
+
+  # Create output object according to class of x
+  if (class.x %in% c("numeric", "character", "logical", "list")) {
+    y <- c(head(x, ...), tail(x, ...))
+  } else if (class.x %in% c("matrix", "data.frame")) {
+    y <- rbind(head(x, ...), tail(x, ...))
+  }
+
+  # Return head/tail object
+  return(y)
+
+}

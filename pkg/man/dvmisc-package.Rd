@@ -17,7 +17,7 @@ assess linearity assumption in logistic regression).
 Package: \tab dvmisc\cr
 Type: \tab Package\cr
 Version: \tab 1.1.1\cr
-Date: \tab 2017-11-05\cr
+Date: \tab 2017-12-28\cr
 License: \tab GPL-2\cr
 }
 The following functions are included:
@@ -72,7 +72,9 @@ The following functions are included:
 \code{\link{prob_odds}}\cr
 \code{\link{prob_logit}}\cr
 \code{\link{odds_prob}}\cr
-\code{\link{logit_prob}}
+\code{\link{logit_prob}}\cr
+\code{\link{trim}}\cr
+\code{\link{headtail}}
 }
 \author{
 Dane R. Van Domelen

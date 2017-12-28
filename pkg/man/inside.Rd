@@ -40,7 +40,7 @@ Science Foundation Graduate Research Fellowship under Grant No. DGE-0940903.
 Dane R. Van Domelen
 }
 \seealso{
-NA
+\code{\link{trim}}
 }
 \examples{
 # Check whether 1 is inside [0, 0.5] and [0, 1.5]

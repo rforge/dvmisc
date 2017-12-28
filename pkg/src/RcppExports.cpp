@@ -21,7 +21,7 @@ RcppExport SEXP dvmisc_sumc_i(SEXP xSEXP) {
   END_RCPP
 }
 // meanc_i
-int meanc_i(IntegerVector x);
+double meanc_i(IntegerVector x);
 RcppExport SEXP dvmisc_meanc_i(SEXP xSEXP) {
   BEGIN_RCPP
   SEXP __sexp_result;
@@ -36,7 +36,7 @@ RcppExport SEXP dvmisc_meanc_i(SEXP xSEXP) {
   END_RCPP
 }
 // varc_n
-int varc_n(NumericVector x);
+double varc_n(NumericVector x);
 RcppExport SEXP dvmisc_varc_n(SEXP xSEXP) {
   BEGIN_RCPP
   SEXP __sexp_result;
@@ -51,7 +51,7 @@ RcppExport SEXP dvmisc_varc_n(SEXP xSEXP) {
   END_RCPP
 }
 // varc_i
-int varc_i(IntegerVector x);
+double varc_i(IntegerVector x);
 RcppExport SEXP dvmisc_varc_i(SEXP xSEXP) {
   BEGIN_RCPP
   SEXP __sexp_result;
@@ -66,7 +66,7 @@ RcppExport SEXP dvmisc_varc_i(SEXP xSEXP) {
   END_RCPP
 }
 // covc_n
-int covc_n(NumericVector x, NumericVector y);
+double covc_n(NumericVector x, NumericVector y);
 RcppExport SEXP dvmisc_covc_n(SEXP xSEXP, SEXP ySEXP) {
   BEGIN_RCPP
   SEXP __sexp_result;
@@ -82,7 +82,7 @@ RcppExport SEXP dvmisc_covc_n(SEXP xSEXP, SEXP ySEXP) {
   END_RCPP
 }
 // covc_i
-int covc_i(IntegerVector x, IntegerVector y);
+double covc_i(IntegerVector x, IntegerVector y);
 RcppExport SEXP dvmisc_covc_i(SEXP xSEXP, SEXP ySEXP) {
   BEGIN_RCPP
   SEXP __sexp_result;
