@@ -13,7 +13,7 @@ headtail(x, ...)
   \item{x}{
 Input object.
 }
-  \code{...}{
+  \item{...}{
 Additional arguments to pass to \code{\link{head}} and \code{\link{tail}}
 functions.
 }
