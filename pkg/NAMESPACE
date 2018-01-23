@@ -4,7 +4,7 @@ importFrom("graphics", "axis", "lines", "plot", "legend", "hist", "points",
            "arrows")
 importFrom("MASS", "fitdistr")
 importFrom("Rcpp", "evalCpp")
-importFrom("stats", "qnorm", "qt", "sd", "var", "cov", "cor", "aov",
+importFrom("stats", "IQR", "qnorm", "qt", "sd", "var", "cov", "cor", "aov",
            "binom.test", "prop.test", "t.test", "chisq.test", "fisher.test",
            "quantile", "anova", "median", "weighted.mean", "dbeta", "dbinom",
            "dcauchy", "dchisq", "dexp", "df", "dgamma", "dgeom", "dhyper",

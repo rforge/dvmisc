@@ -61,6 +61,7 @@ Dane R. Van Domelen
 }
 \seealso{
 NA
+}
 \examples{
 NA
 }

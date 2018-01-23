@@ -9,8 +9,8 @@ and \code{FALSE} otherwise. Also works for multiple sets of values and/or
 endpoints.
 }
 \usage{
-inside(x, ends, inclusive = TRUE, include.left = inclusive,
-       include.right = inclusive)
+inside(x, ends, inclusive = TRUE, include.lower = inclusive,
+       include.upper = inclusive)
 }
 \arguments{
   \item{x}{

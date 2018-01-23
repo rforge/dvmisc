@@ -1185,7 +1185,7 @@ sumsim <- function(estimates, ses = NULL,
 
   # If CI coverage requested, get z value
   if ("coverage" %in% statistics) {
-    zval <- qnorm(1 - (alphal / 2))
+    zval <- qnorm(1 - (alpha / 2))
   }
 
   # Calculate requested statistics
