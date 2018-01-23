@@ -27,13 +27,30 @@ list.override <- function(list1, list2) {
 
 
 # Check if numeric value is in between two other values
-inside <- function(x, ends, inclusive = TRUE) {
+inside <- function(x, ends, inclusive = TRUE, include.lower = inclusive,
+                   include.upper = inclusive) {
 
-  if (inclusive) {
-    x >= ends[1] & x <= ends[2]
+  # Get >=/> and <=/< depending on values of include.lower and include.upper
+  sign1 <- ifelse(include.lower, ">=", ">")
+  sign2 <- ifelse(include.upper, "<=", "<")
+
+  # Check whether x is inside specified interval(s)
+  if (! is.matrix(ends)) {
+
+    out <- sapply(x, function(x)
+      eval(parse(text = paste(x, sign1, ends[1], "&", x, sign2, ends[2]))))
+
   } else {
-    x > ends[1] & x < ends[2]
+
+    mat <- cbind(x, ends)
+    out <- apply(mat, 1, function(x) {
+      eval(parse(text = paste(x[1], sign1, x[2], "&", x[1], sign2, x[3])))
+    })
+
   }
+
+  # Return logical
+  return(out)
 
 }
 
@@ -1125,5 +1142,96 @@ headtail <- function(x, ...) {
 
   # Return head/tail object
   return(y)
+
+}
+
+
+# Add percent diff functions! Just (v1 - v2) / ((v1 + v2) / 2). See if C++
+# is faster.
+
+# Add plus/minus function!
+
+# Function for summarizing simulation results. Add power!
+sumsim <- function(estimates, ses = NULL,
+                   truth = NULL,
+                   statistics = c("mean_bias", "sd", "mean_se", "mse",
+                                  "coverage"),
+                   alpha = 0.05,
+                   digits = 3) {
+
+  # Remove statistics that can't be calculated due to unspecified inputs
+  if (is.null(truth)) {
+    statistics <- statistics[-which(statistics %in% c("mean_bias", "median_bias", "mse", "coverage"))]
+  }
+  if (is.null(ses)) {
+    statistics <- statistics[-which(statistics %in% c("mean_se", "coverage"))]
+  }
+
+  # Create values for sprintf
+  if (length(digits) == 1) {
+    digits <- rep(digits, length(statistics))
+  }
+  sprs <- paste("%.", digits, "f", sep = "")
+
+  # Options: mean/median, mean/median bias, SD/IQR, mean SE, MSE, coverage
+
+  # Initialize matrix
+  mat <- matrix(NA, ncol = length(statistics), nrow = ncol(estimates))
+  mat.colnames <- c()
+  mat.rownames <- colnames(estimates)
+  if (is.null(mat.rownames)) {
+    mat.rownames <- paste("Method", 1: ncol(estimates))
+  }
+
+  # If CI coverage requested, get z value
+  if ("coverage" %in% statistics) {
+    zval <- qnorm(1 - (alphal / 2))
+  }
+
+  # Calculate requested statistics
+  index <- 0
+  for (ii in 1: length(statistics)) {
+    index <- index + 1
+    statistic.ii <- statistics[ii]
+    if (statistic.ii == "mean") {
+      mat[, index] <- sprintf(sprs[ii], apply(estimates, 2, mean))
+      mat.colnames[ii] <- "Mean"
+    } else if (statistic.ii == "median") {
+      mat[, index] <- sprintf(sprs[ii], apply(estimates, 2, median))
+      mat.colnames[ii] <- "Median"
+    } else if (statistic.ii == "mean_bias") {
+      mat[, index] <- sprintf(sprs[ii], apply(estimates, 2, mean) - truth)
+      mat.colnames[ii] <- "Mean Bias"
+    } else if (statistic.ii == "median_bias") {
+      mat[, index] <- sprintf(sprs[ii], apply(estimates, 2, median) - truth)
+      mat.colnames[ii] <- "Median Bias"
+    } else if (statistic.ii == "sd") {
+      mat[, index] <- sprintf(sprs[ii], apply(estimates, 2, sd))
+      mat.colnames[ii] <- "SD"
+    } else if (statistic.ii == "iqr") {
+      mat[, index] <- sprintf(sprs[ii], apply(estimates, 2, IQR))
+      mat.colnames[ii] <- "IQR"
+    } else if (statistic.ii == "mean_se") {
+      mat[, index] <- sprintf(sprs[ii], apply(ses, 2, mean))
+      mat.colnames[ii] <- "Mean SE"
+    } else if (statistic.ii == "mse") {
+      mat[, index] <- sprintf(sprs[ii], apply(ses, 2, function(x)
+        mean((x - truth)^2)))
+      mat.colnames[ii] <- "MSE"
+    } else if (statistic.ii == "coverage") {
+      for (jj in 1: ncol(estimates)) {
+        mat[jj, index] <-
+          mean(inside(x = truth,
+                      ends = cbind(estimates[, jj] - zval * ses[, jj],
+                                   estimates[, jj] + zval * ses[, jj])))
+      }
+      mat.colnames[ii] <- "Coverage"
+    }
+  }
+
+  # Return mat with appropriate row and column names
+  rownames(mat) <- mat.rownames
+  colnames(mat) <- mat.colnames
+  return(mat)
 
 }

@@ -1,33 +1,40 @@
 \name{inside}
 \alias{inside}
 \title{
-Check Whether a Numeric Value is in Between Two Other Numeric Values
+Check Whether Numeric Value Falls Inside Two Other Numeric Values
 }
 \description{
-If \code{inclusive = TRUE}, code is: \code{x >= ends[1] & x <= ends[2]}. If
-\code{inclusive = FALSE}, code is: \code{x > ends[1] & x < ends[2]}.
+Returns \code{TRUE} if \code{x} falls inside range defined by \code{ends}
+and \code{FALSE} otherwise. Also works for multiple sets of values and/or
+endpoints.
 }
 \usage{
-inside(x, ends, inclusive = TRUE)
+inside(x, ends, inclusive = TRUE, include.left = inclusive,
+       include.right = inclusive)
 }
 \arguments{
   \item{x}{
-Numeric value.
+Numeric value or vector of numeric values.
 }
   \item{ends}{
-Numeric vector of length 2 indicating the endpoints for the interval of
-interest.
+Numeric vector of length 2 specifying the endpoints for the interval, or
+a 2-column numeric matrix where each row specifies a pair of endpoints.
 }
   \item{inclusive}{
 Logical value indicating whether endpoints should be included.
+}
+  \item{include.lower}{
+Logical value indicating whether the lower endpoint should be included.
+}
+  \item{include.upper}{
+Logical value indicating whether the lower endpoint should be included.
 }
 }
 \details{
 NA
 }
 \value{
-Logical value indicating whether \code{x} falls inside \code{ends[1]} and
-\code{ends[2]}.
+Logical value or vector.
 }
 \note{
 NA
@@ -43,11 +50,12 @@ Dane R. Van Domelen
 \code{\link{trim}}
 }
 \examples{
-# Check whether 1 is inside [0, 0.5] and [0, 1.5]
-inside(1, c(0, 0.5))
-inside(1, c(0, 1.5))
+# Check whether 2 is inside [0, 2.5]
+inside(1, c(0, 2.5))
 
-# Check whether 3.2 is inside [3.2, 3.6] and (3.2, 3.6)
-inside(3.2, c(3.2, 3.6))
-inside(3.2, c(3.2, 3.6), inclusive = FALSE)
+# Check whether 2 and 3 are inside (0, 3)
+inside(c(2, 3), c(0, 3), inclusive = FALSE)
+
+# Check whether 1 is inside [1, 2] and [3, 4]
+inside(1, rbind(c(1, 2), c(3, 4)))
 }
