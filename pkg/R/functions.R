@@ -1151,7 +1151,7 @@ headtail <- function(x, ...) {
 
 # Add plus/minus function!
 
-# Function for summarizing simulation results. Add power!
+# Function for summarizing simulation results. Add power! And make faster.
 sumsim <- function(estimates, ses = NULL,
                    truth = NULL,
                    statistics = c("mean_bias", "sd", "mean_se", "mse",
@@ -1221,9 +1221,10 @@ sumsim <- function(estimates, ses = NULL,
     } else if (statistic.ii == "coverage") {
       for (jj in 1: ncol(estimates)) {
         mat[jj, index] <-
-          mean(inside(x = truth,
-                      ends = cbind(estimates[, jj] - zval * ses[, jj],
-                                   estimates[, jj] + zval * ses[, jj])))
+          sprintf(sprs[ii],
+                  mean(inside(x = truth,
+                              ends = cbind(estimates[, jj] - zval * ses[, jj],
+                                           estimates[, jj] + zval * ses[, jj]))))
       }
       mat.colnames[ii] <- "Coverage"
     }

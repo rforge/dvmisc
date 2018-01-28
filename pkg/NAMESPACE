@@ -13,4 +13,3 @@ importFrom("stats", "IQR", "qnorm", "qt", "sd", "var", "cov", "cor", "aov",
 importFrom("utils", "head", "tail")
 import(microbenchmark)
 import(rbenchmark)
-
